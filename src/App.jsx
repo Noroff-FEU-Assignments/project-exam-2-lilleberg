@@ -8,10 +8,15 @@ import Login from "./pages/Login/Login";
 import ContactMessages from "./pages/ContactMessages/ContactMessages";
 import Enquiries from "./pages/Enquiries/Enquiries";
 import NewEstablishment from "./pages/NewEstablishment/NewEstablishment";
+import Navigation from "./components/layout/Navigation/Navigation";
 
 function App() {
   return (
     <Router>
+      <header>
+        <Navigation />
+      </header>
+
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
