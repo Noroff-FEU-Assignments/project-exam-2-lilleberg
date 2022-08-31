@@ -21,7 +21,7 @@ function Navigation() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="justify-content-end">
             <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="#link">Link</Nav.Link>
+            <Nav.Link href="/establishments">Establishments</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
