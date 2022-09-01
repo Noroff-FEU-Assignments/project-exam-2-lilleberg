@@ -9,32 +9,41 @@ import ContactMessages from "./pages/ContactMessages/ContactMessages";
 import Enquiries from "./pages/Enquiries/Enquiries";
 import NewEstablishment from "./pages/NewEstablishment/NewEstablishment";
 import Navigation from "./components/layout/Navigation/Navigation";
+import Footer from "./components/layout/Footer/Footer";
 
 function App() {
   return (
     <Router>
-      <header>
-        <Navigation />
-      </header>
+      <div className="content-wrapper">
+        <header>
+          <Navigation />
+        </header>
 
-      <main>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/establishments" element={<Establishments />} />
-          <Route
-            path="/establishment/:id"
-            element={<EstablishmentSpecific />}
-          />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/admin/contact-messages" element={<ContactMessages />} />
-          <Route path="/admin/enquiries" element={<Enquiries />} />
-          <Route
-            path="/admin/new-establishment"
-            element={<NewEstablishment />}
-          />
-        </Routes>
-      </main>
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/establishments" element={<Establishments />} />
+            <Route
+              path="/establishment/:id"
+              element={<EstablishmentSpecific />}
+            />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/login" element={<Login />} />
+            <Route
+              path="/admin/contact-messages"
+              element={<ContactMessages />}
+            />
+            <Route path="/admin/enquiries" element={<Enquiries />} />
+            <Route
+              path="/admin/new-establishment"
+              element={<NewEstablishment />}
+            />
+          </Routes>
+        </main>
+        <footer>
+          <Footer />
+        </footer>
+      </div>
     </Router>
   );
 }

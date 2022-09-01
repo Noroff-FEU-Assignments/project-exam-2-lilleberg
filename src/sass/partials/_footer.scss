@@ -1,0 +1,13 @@
+.footer {
+  background-color: $primary;
+  margin-top: 40px;
+  padding: 20px;
+
+  display: flex;
+  place-content: center;
+  gap: 20px;
+
+  &__item {
+    color: $white;
+  }
+}

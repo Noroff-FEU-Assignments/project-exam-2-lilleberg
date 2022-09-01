@@ -1,0 +1,22 @@
+* {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100vh;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+main {
+  flex-grow: 1;
+}
+
+.container-main {
+  margin: 0 20px;
+}

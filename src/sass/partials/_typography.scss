@@ -1,0 +1,56 @@
+h1,
+h2,
+h3,
+h4,
+p,
+span,
+label {
+  color: $black;
+  margin: 0px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Josefin Sans", "Segoe UI", sans-serif;
+  font-weight: 400;
+}
+
+p,
+button,
+label {
+  font-family: "Lato", "Segoe UI", sans-serif;
+}
+
+p {
+  font-weight: 300;
+  font-size: 1.1rem;
+}
+
+label {
+  font-size: 1rem;
+  //or 1.1rem as p ?
+}
+
+button {
+  font-weight: 400;
+  font-size: 1.1rem;
+}
+
+h1 {
+  font-size: 2.2rem;
+  text-align: center;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.8rem;
+}
+
+/* h4 {
+  font-size: 1.5rem;
+} */

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
+import logo from "../../../logo.png";
 
 function Navigation() {
   /*
@@ -15,13 +16,26 @@ function Navigation() {
     }
   */
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar className="navbar" bg="light" expand="lg">
       <Container>
+        <Navbar.Brand href="/">
+          <img className="navbar__logo" src={logo} alt="Logo for Holidaze" />
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="justify-content-end">
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/establishments">Establishments</Nav.Link>
+            <Nav.Item>
+              <Nav.Link href="/">Home</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link href="/establishments">Establishments</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link href="/contact">Contact</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link href="/login">Sign in</Nav.Link>
+            </Nav.Item>
           </Nav>
         </Navbar.Collapse>
       </Container>

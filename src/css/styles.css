@@ -1,0 +1,111 @@
+* {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100vh;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+main {
+  flex-grow: 1;
+}
+
+.container-main {
+  margin: 0 20px;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+span,
+label {
+  color: #0e0e11;
+  margin: 0px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Josefin Sans", "Segoe UI", sans-serif;
+  font-weight: 400;
+}
+
+p,
+button,
+label {
+  font-family: "Lato", "Segoe UI", sans-serif;
+}
+
+p {
+  font-weight: 300;
+  font-size: 1.1rem;
+}
+
+label {
+  font-size: 1rem;
+}
+
+button {
+  font-weight: 400;
+  font-size: 1.1rem;
+}
+
+h1 {
+  font-size: 2.2rem;
+  text-align: center;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.8rem;
+}
+
+/* h4 {
+  font-size: 1.5rem;
+} */
+.navbar__logo {
+  height: 40px;
+}
+
+.footer {
+  background-color: #006164;
+  margin-top: 40px;
+  padding: 20px;
+  display: flex;
+  place-content: center;
+  gap: 20px;
+}
+.footer__item {
+  color: #ffffff;
+}
+
+.hero {
+  background-color: rgb(39, 39, 39);
+  height: 250px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  position: relative;
+}
+.hero__text > * {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  padding: 20px;
+  width: 280px;
+}/*# sourceMappingURL=styles.css.map */
