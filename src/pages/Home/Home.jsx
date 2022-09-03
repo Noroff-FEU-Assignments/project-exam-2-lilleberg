@@ -2,7 +2,6 @@ import React from "react";
 import Container from "../../components/layout/Container/Container";
 import Heading from "../../components/typography/Heading/Heading";
 import Searchbar from "../../components/ui/Searchbar/Searchbar";
-import Button from "react-bootstrap/Button";
 import { NavLink } from "react-router-dom";
 
 //import { BASE_URL } from "../../constants/api";
