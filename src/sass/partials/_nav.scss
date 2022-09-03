@@ -1,5 +1,28 @@
+.nav {
+  background-color: $primary;
+  padding: 20px;
+  gap: 20px;
+}
+
+.navbar-toggler,
+.navbar-toggler-icon {
+  border: none;
+  color: $primary;
+
+  &:focus {
+    outline: none;
+  }
+}
+
 .navbar {
+  padding: 0;
+
   &__logo {
     height: 40px;
+    margin: 5px 10px;
   }
+}
+
+.container-nav {
+  padding: 0;
 }

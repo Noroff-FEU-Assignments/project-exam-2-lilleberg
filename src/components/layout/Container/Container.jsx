@@ -1,7 +1,7 @@
 import React from "react";
 
-function Container({ children }) {
-  return <div className="container-main">{children}</div>;
+function Container({ children, className }) {
+  return <div className={className}>{children}</div>;
 }
 
 export default Container;

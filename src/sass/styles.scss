@@ -1,6 +1,8 @@
 @import "partials/variables";
+@import "partials/globals";
 @import "partials/layout";
 @import "partials/typography";
 @import "partials/nav";
 @import "partials/footer";
-@import "partials/pages/home";
+@import "pages/home";
+@import "partials/components/buttons";

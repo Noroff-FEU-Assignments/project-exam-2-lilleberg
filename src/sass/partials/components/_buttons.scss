@@ -1,0 +1,14 @@
+.btn {
+  min-width: 100px;
+  border: $border-primary;
+  color: $primary;
+  background-color: $white;
+  padding: 5px 10px;
+  box-shadow: $shadow;
+
+  &:hover {
+    color: $white;
+    background-color: $primary;
+    border: $border-primary;
+  }
+}

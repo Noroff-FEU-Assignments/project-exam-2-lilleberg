@@ -4,9 +4,20 @@ h3,
 h4,
 p,
 span,
-label {
+label,
+a {
   color: $black;
   margin: 0px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 1.3rem;
+
+  &:hover {
+    font-weight: 400;
+    color: $white;
+  }
 }
 
 h1,
@@ -23,8 +34,12 @@ label {
   font-family: "Lato", "Segoe UI", sans-serif;
 }
 
-p {
+p,
+a {
   font-weight: 300;
+}
+
+p {
   font-size: 1.1rem;
 }
 
@@ -33,7 +48,7 @@ label {
   //or 1.1rem as p ?
 }
 
-button {
+.btn {
   font-weight: 400;
   font-size: 1.1rem;
 }
@@ -41,6 +56,7 @@ button {
 h1 {
   font-size: 2.2rem;
   text-align: center;
+  margin: 40px 0;
 }
 
 h2 {
@@ -54,3 +70,13 @@ h3 {
 /* h4 {
   font-size: 1.5rem;
 } */
+
+// Navigation
+.nav__link {
+  font-size: 1.3rem;
+  color: $white;
+
+  &--active {
+    font-weight: 600;
+  }
+}

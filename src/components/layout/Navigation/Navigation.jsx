@@ -1,9 +1,10 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-import Container from "react-bootstrap/Container";
+//import Container from "../Container/Container";
 import logo from "../../../logo.png";
+import Container from "react-bootstrap/Container";
 
 function Navigation() {
   /*
@@ -15,26 +16,55 @@ function Navigation() {
       navigate"/
     }
   */
+
   return (
-    <Navbar className="navbar" bg="light" expand="lg">
-      <Container>
-        <Navbar.Brand href="/">
+    <Navbar bg="light" expand="lg">
+      <Container fluid className="container-nav">
+        <Navbar.Brand href="/" className="navbar__brand">
           <img className="navbar__logo" src={logo} alt="Logo for Holidaze" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="justify-content-end">
-            <Nav.Item>
-              <Nav.Link href="/">Home</Nav.Link>
+          <Nav className="nav justify-content-end align-items-end">
+            <Nav.Item className="nav__item">
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  isActive ? "nav__link active nav__link--active" : "nav__link"
+                }
+              >
+                Home
+              </NavLink>
             </Nav.Item>
-            <Nav.Item>
-              <Nav.Link href="/establishments">Establishments</Nav.Link>
+            <Nav.Item className="nav__item">
+              <NavLink
+                to="/establishments"
+                className={({ isActive }) =>
+                  isActive ? "nav__link active nav__link--active" : "nav__link"
+                }
+              >
+                Establishments
+              </NavLink>
             </Nav.Item>
-            <Nav.Item>
-              <Nav.Link href="/contact">Contact</Nav.Link>
+            <Nav.Item className="nav__item">
+              <NavLink
+                to="/contact"
+                className={({ isActive }) =>
+                  isActive ? "nav__link active nav__link--active" : "nav__link"
+                }
+              >
+                Contact
+              </NavLink>
             </Nav.Item>
-            <Nav.Item>
-              <Nav.Link href="/login">Sign in</Nav.Link>
+            <Nav.Item className="nav__item">
+              <NavLink
+                to="/login"
+                className={({ isActive }) =>
+                  isActive ? "nav__link active nav__link--active" : "nav__link"
+                }
+              >
+                Sign in
+              </NavLink>
             </Nav.Item>
           </Nav>
         </Navbar.Collapse>
