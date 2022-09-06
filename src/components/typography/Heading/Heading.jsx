@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 
-function Heading({ size = "1", content }) {
+function Heading({ size = "1", content, className = "" }) {
   const ContentHeading = `h${size}`;
-  return <ContentHeading>{content}</ContentHeading>;
+  return <ContentHeading className={className}>{content}</ContentHeading>;
 }
 
 Heading.propTypes = {

@@ -15,7 +15,7 @@ html {
   height: 100vh;
 }
 
-.content-wrapper {
+#root {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -88,6 +88,10 @@ h1 {
   margin: 40px 0;
 }
 
+.h1-home {
+  margin: 0;
+}
+
 h2 {
   font-size: 2rem;
 }
@@ -102,9 +106,6 @@ h3 {
 .nav__link {
   font-size: 1.3rem;
   color: #ffffff;
-}
-.nav__link--active {
-  font-weight: 600;
 }
 
 .nav {
@@ -133,6 +134,10 @@ h3 {
 
 .container-nav {
   padding: 0;
+}
+
+.nav__link.active {
+  font-weight: 600;
 }
 
 .footer {
@@ -165,10 +170,6 @@ h3 {
   width: 280px;
 }
 
-h1 {
-  margin: 0;
-}
-
 .searchbar {
   width: 220px;
   margin: 40px auto;
@@ -198,4 +199,21 @@ h1 {
   color: #ffffff;
   background-color: #006164;
   border: 2px solid #006164;
+}
+
+.form {
+  max-width: 350px;
+  align-items: flex-start;
+}
+.form__group {
+  width: 100%;
+}
+.form__input {
+  border: 2px solid #006164;
+}
+
+.input-error {
+  font-size: 0.9rem;
+  color: #980505;
+  font-weight: 400;
 }/*# sourceMappingURL=styles.css.map */

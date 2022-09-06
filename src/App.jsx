@@ -10,11 +10,12 @@ import Enquiries from "./pages/Enquiries/Enquiries";
 import NewEstablishment from "./pages/NewEstablishment/NewEstablishment";
 import Navigation from "./components/layout/Navigation/Navigation";
 import Footer from "./components/layout/Footer/Footer";
+import { AuthProvider } from "./context/AuthContext";
 
 function App() {
   return (
-    <Router>
-      <div className="content-wrapper">
+    <AuthProvider>
+      <Router>
         <header>
           <Navigation />
         </header>
@@ -43,8 +44,8 @@ function App() {
         <footer>
           <Footer />
         </footer>
-      </div>
-    </Router>
+      </Router>
+    </AuthProvider>
   );
 }
 

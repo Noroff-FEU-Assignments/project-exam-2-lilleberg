@@ -6,23 +6,21 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-/* import { BASE_URL, TOKENPATH } from "";
-import AuthContext from ""; */
+import { BASE_URL, TOKEN_PATH } from "../../../constants/api";
+import AuthContext from "../../../context/AuthContext";
 import FormError from "../FormError/FormError";
 
-/*
-  const url = BASE_URL + TOKEN_PATH;
-  console.log(url);
-*/
+const url = BASE_URL + TOKEN_PATH;
 
 const schema = yup.object().shape({
-  username: yup.string().required("Please enter email or usename"),
+  username: yup.string().required("Please enter email or username"),
   password: yup.string().required("Please enter your password"),
 });
 
 function LoginForm() {
   const [submitting, setSubmitting] = useState(false);
   const [loginError, setLoginError] = useState(null);
+  const [auth, setAuth] = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -34,36 +32,42 @@ function LoginForm() {
     resolver: yupResolver(schema),
   });
 
-  const [auth, setAuth] = useContext(AuthContext);
-
   async function onSubmit(data) {
     setSubmitting(true);
     setLoginError(null);
-
     console.log(data);
 
-    try {
-      const response = await axios.post(url, data);
-      console.log("Response:", response.data);
+    const options = {
+      identifier: data.username,
+      password: data.password,
+    };
 
-      if (response.ok) {
+    try {
+      const response = await axios.post(url, options);
+      console.log("Response:", response);
+
+      if (response.status === 200) {
         setAuth(response.data);
         navigate("/admin/new-establishment");
       }
     } catch (error) {
-      console.log("Error: " + error);
-      setLoginError("Password and/or username is incorrect");
+      console.log(error);
+      setLoginError("Username and/or password is incorrect");
     } finally {
       setSubmitting(false);
     }
   }
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
+    <Form
+      className="form d-flex flex-column mx-auto"
+      onSubmit={handleSubmit(onSubmit)}
+    >
       {loginError && <FormError className="form-error">{loginError}</FormError>}
-      <Form.Group className="mb-3" controlId="formBasicEmail">
+      <Form.Group className="form__group" controlId="formBasicEmail">
         <Form.Label>Email/username</Form.Label>
         <Form.Control
+          className="form__input"
           type="text"
           placeholder="ola@nordmann.no"
           name="username"
@@ -76,9 +80,10 @@ function LoginForm() {
         )}
       </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formBasicPassword">
+      <Form.Group className="form__group" controlId="formBasicPassword">
         <Form.Label>Password</Form.Label>
         <Form.Control
+          className="form__input"
           type="password"
           placeholder="Password"
           name="password"
@@ -91,7 +96,7 @@ function LoginForm() {
         )}
       </Form.Group>
 
-      <Button className="btn btn--submit" type="submit">
+      <Button className="btn btn--submit align-self-center" type="submit">
         {submitting ? "Logging in..." : "Sign in"}
       </Button>
     </Form>

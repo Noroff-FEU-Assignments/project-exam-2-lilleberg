@@ -13,7 +13,7 @@ function Home() {
       <div className="hero">
         {/*image from strapi*/}
         <div className="hero__text">
-          <Heading content="Welcome to Bergen" />
+          <Heading content="Welcome to Bergen" className="h1-home" />
         </div>
       </div>
       <Container className="container-main">
@@ -34,7 +34,7 @@ function Home() {
           <Heading size="3" content="Member?" />
           <p>
             Did you know members can collect bonus points to get discounts on
-            bookings? Become a daze member now!
+            bookings? Become a Daze member now!
           </p>
         </section>
       </Container>
