@@ -121,12 +121,15 @@ h3 {
 }
 
 .form {
-  max-width: 350px;
+  max-width: 380px;
   align-items: flex-start;
   gap: 20px;
 }
 .form__group {
   width: 100%;
+}
+.form__group--firstName {
+  margin-right: 10px;
 }
 .form__label {
   margin-bottom: 5px;
@@ -239,6 +242,6 @@ h3 {
   border: 2px solid #006164;
 }
 
-.form-control {
+.form-control:not(input, textarea) {
   border: none;
 }/*# sourceMappingURL=styles.css.map */

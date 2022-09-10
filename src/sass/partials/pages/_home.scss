@@ -31,6 +31,6 @@
   }
 }
 
-.form-control {
+.form-control:not(input, textarea) {
   border: none;
 }

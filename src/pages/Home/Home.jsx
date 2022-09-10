@@ -19,7 +19,6 @@ function Home() {
     (async function () {
       try {
         const response = await axios.get(url);
-        console.log(response);
 
         if (response.status === 200)
           setImage(response.data.data.attributes.hero.data.attributes);

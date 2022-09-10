@@ -12,6 +12,7 @@ function ContactMessages() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  //authenticated request
   const http = useAxios();
   const apiEndpoint = "messages";
 
@@ -58,33 +59,3 @@ function ContactMessages() {
 }
 
 export default ContactMessages;
-
-/* <div key={message.id} className="message">
-              <div className="message_date-time">
-                <p>{moment(item.publishedAt).format("DD.MM.YYYY, H:mm")}</p>
-              </div>
-              <div className="message__firstname d-flex">
-                <p>First name</p>
-                <p>{item.firstName}</p>
-              </div>
-
-              <div className="message__email d-flex">
-                <p>Last name</p>
-                <p>{item.lastName}</p>
-              </div>
-
-              <div className="email d-flex">
-                <p>Email</p>
-                <p>{item.email}</p>
-              </div>
-
-              <div className="message__subject d-flex">
-                <p>Subject</p>
-                <p>{item.subject}</p>
-              </div>
-
-              <div className="message__message d-flex">
-                <p>Message</p>
-                <p>{item.message}</p>
-              </div>
-            </div> */

@@ -1,10 +1,14 @@
 .form {
-  max-width: 350px;
+  max-width: 380px;
   align-items: flex-start;
   gap: $space-md;
 
   &__group {
     width: 100%;
+
+    &--firstName {
+      margin-right: $space-s;
+    }
   }
 
   &__label {

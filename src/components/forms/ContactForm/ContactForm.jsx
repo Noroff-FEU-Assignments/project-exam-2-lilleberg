@@ -1,16 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import FormError from "../FormError/FormError";
 import { useForm } from "react-hook-form";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import { BASE_URL } from "../../../constants/api";
+import axios from "axios";
 
 const schema = yup.object().shape({
   firstName: yup
     .string()
     .trim()
-    .required("Please enter your name")
+    .required("Please enter your first name")
     .min(2, "Must be at least 2 characters"),
   lastName: yup
     .string()
@@ -31,6 +33,10 @@ const schema = yup.object().shape({
 
 function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const url = BASE_URL + "messages";
 
   const {
     register,
@@ -41,8 +47,25 @@ function ContactForm() {
     resolver: yupResolver(schema),
   });
 
-  function onSubmit(data) {
-    console.log(data);
+  async function onSubmit(data) {
+    console.log("data", data);
+
+    const options = {
+      data: data,
+    };
+
+    try {
+      const response = await axios.post(url, options);
+      console.log(response);
+
+      if (response.status === 200) alert("Form submitted");
+      if (response.error) alert("An error occurred");
+    } catch (error) {
+      console.log(error.response);
+      setError(error.toString());
+    } finally {
+      setLoading(false);
+    }
 
     setSubmitted(true);
     reset();
@@ -53,33 +76,38 @@ function ContactForm() {
       className="form d-flex flex-column mx-auto"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <Form.Group className="form__group" controlId="firstName">
-        <Form.Label className="form__label">First name *</Form.Label>
-        <Form.Control
-          className="form__input"
-          type="text"
-          {...register("firstName")}
-        />
-        {errors.firstName && (
-          <FormError className="input-error">
-            {errors.firstName.message}
-          </FormError>
-        )}
-      </Form.Group>
+      <div className="form__fullName d-flex">
+        <Form.Group
+          className="form__group form__group--firstName"
+          controlId="firstName"
+        >
+          <Form.Label className="form__label">First name *</Form.Label>
+          <Form.Control
+            className="form__input"
+            type="text"
+            {...register("firstName")}
+          />
+          {errors.firstName && (
+            <FormError className="input-error">
+              {errors.firstName.message}
+            </FormError>
+          )}
+        </Form.Group>
 
-      <Form.Group className="form__group" controlId="lastName">
-        <Form.Label className="form__label">Last name *</Form.Label>
-        <Form.Control
-          className="form__input"
-          type="text"
-          {...register("lastName")}
-        />
-        {errors.lastName && (
-          <FormError className="input-error">
-            {errors.lastName.message}
-          </FormError>
-        )}
-      </Form.Group>
+        <Form.Group className="form__group" controlId="lastName">
+          <Form.Label className="form__label">Last name *</Form.Label>
+          <Form.Control
+            className="form__input"
+            type="text"
+            {...register("lastName")}
+          />
+          {errors.lastName && (
+            <FormError className="input-error">
+              {errors.lastName.message}
+            </FormError>
+          )}
+        </Form.Group>
+      </div>
 
       <Form.Group className="form__group" controlId="emailAddress">
         <Form.Label className="form__label">Email address *</Form.Label>
