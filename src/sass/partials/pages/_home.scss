@@ -21,12 +21,12 @@
   margin: 40px auto;
 
   input {
-    border: $border;
+    border: $border-thin;
     border-radius: $border-radius;
     box-shadow: $shadow;
 
     &:focus {
-      border: $border-primary;
+      border: $border-thick;
     }
   }
 }

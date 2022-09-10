@@ -7,7 +7,7 @@ span,
 label,
 a {
   color: $black;
-  margin: 0px;
+  margin: 0;
 }
 
 a {
@@ -35,28 +35,25 @@ label {
 }
 
 p,
-a {
+a,
+.btn {
   font-weight: 300;
-}
-
-p {
-  font-size: 1.1rem;
-}
-
-label {
-  font-size: 1rem;
-  //or 1.1rem as p ?
 }
 
 .btn {
   font-weight: 400;
+}
+
+p,
+.form__input,
+.form__label {
   font-size: 1.1rem;
 }
 
 h1 {
   font-size: 2.2rem;
   text-align: center;
-  margin: 40px 0;
+  margin: $space-lg 0;
 }
 
 .h1-home {

@@ -5,8 +5,14 @@ $white: #ffffff;
 $error-red: #980505;
 $shadow-color: #9f9f9f;
 
-$border: 1px solid $primary;
-$border-primary: 2px solid $primary;
+$border-thin: 1px solid $primary;
+$border-thick: 2px solid $primary;
+$border-error: 2px solid $error-red;
 $border-radius: 3px;
 
 $shadow: 3px 3px 5px $shadow-color;
+
+$space-xs: 5px;
+$space-s: 10px;
+$space-md: 20px;
+$space-lg: 40px;

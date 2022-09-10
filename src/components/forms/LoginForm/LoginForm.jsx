@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useForm } from "react-hook-form";
@@ -13,7 +13,10 @@ import FormError from "../FormError/FormError";
 const url = BASE_URL + TOKEN_PATH;
 
 const schema = yup.object().shape({
-  username: yup.string().required("Please enter email or username"),
+  username: yup
+    .string()
+    .email("Please enter a valid email")
+    .required("Please enter your email"),
   password: yup.string().required("Please enter your password"),
 });
 
@@ -63,13 +66,14 @@ function LoginForm() {
       className="form d-flex flex-column mx-auto"
       onSubmit={handleSubmit(onSubmit)}
     >
-      {loginError && <FormError className="form-error">{loginError}</FormError>}
+      {loginError && (
+        <FormError className="form-error mx-auto">{loginError}</FormError>
+      )}
       <Form.Group className="form__group" controlId="formBasicEmail">
-        <Form.Label>Email/username</Form.Label>
+        <Form.Label className="form__label">Email</Form.Label>
         <Form.Control
           className="form__input"
           type="text"
-          placeholder="ola@nordmann.no"
           name="username"
           {...register("username")}
         />
@@ -81,11 +85,10 @@ function LoginForm() {
       </Form.Group>
 
       <Form.Group className="form__group" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
+        <Form.Label className="form__label">Password</Form.Label>
         <Form.Control
           className="form__input"
           type="password"
-          placeholder="Password"
           name="password"
           {...register("password")}
         />

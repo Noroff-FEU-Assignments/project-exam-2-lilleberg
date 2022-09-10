@@ -1,6 +1,6 @@
 .btn {
   min-width: 100px;
-  border: $border-primary;
+  border: $border-thick;
   color: $primary;
   background-color: $white;
   padding: 5px 10px;
@@ -9,6 +9,6 @@
   &:hover {
     color: $white;
     background-color: $primary;
-    border: $border-primary;
+    border: $border-thick;
   }
 }

@@ -1,17 +1,47 @@
 .form {
   max-width: 350px;
   align-items: flex-start;
+  gap: $space-md;
 
   &__group {
     width: 100%;
   }
 
+  &__label {
+    margin-bottom: $space-xs;
+  }
+
   &__input {
-    border: $border-primary;
+    border: $border-thin;
+    border-radius: $border-radius;
+    box-shadow: $shadow;
+
+    padding-left: 5px;
+    height: 2.5rem;
+
+    &:focus {
+      border: $border-thick;
+    }
+  }
+
+  textarea {
+    min-height: 80px;
+  }
+
+  .input-error {
+    margin-top: $space-xs;
+  }
+
+  .btn--submit {
+    margin-top: $space-md;
   }
 }
 
 .form-error {
+  border: $border-error;
+  border-radius: $border-radius;
+  padding: $space-s;
+  margin-bottom: $space-md;
 }
 
 .input-error {

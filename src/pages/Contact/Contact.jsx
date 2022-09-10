@@ -1,4 +1,3 @@
-import React from "react";
 import ContactForm from "../../components/forms/ContactForm/ContactForm";
 import Container from "../../components/layout/Container/Container";
 import Heading from "../../components/typography/Heading/Heading";

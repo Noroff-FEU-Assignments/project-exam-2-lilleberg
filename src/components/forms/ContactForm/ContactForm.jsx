@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import FormError from "../FormError/FormError";
@@ -26,7 +26,7 @@ const schema = yup.object().shape({
     .string()
     .trim()
     .required("Please enter a message")
-    .min(10, "Must be at least 1+ characters"),
+    .min(10, "Must be at least 10 characters"),
 });
 
 function ContactForm() {
@@ -54,11 +54,10 @@ function ContactForm() {
       onSubmit={handleSubmit(onSubmit)}
     >
       <Form.Group className="form__group" controlId="firstName">
-        <Form.Label>First name</Form.Label>
+        <Form.Label className="form__label">First name *</Form.Label>
         <Form.Control
           className="form__input"
           type="text"
-          placeholder="First name"
           {...register("firstName")}
         />
         {errors.firstName && (
@@ -69,11 +68,10 @@ function ContactForm() {
       </Form.Group>
 
       <Form.Group className="form__group" controlId="lastName">
-        <Form.Label>Last name</Form.Label>
+        <Form.Label className="form__label">Last name *</Form.Label>
         <Form.Control
           className="form__input"
           type="text"
-          placeholder="Last name"
           {...register("lastName")}
         />
         {errors.lastName && (
@@ -84,11 +82,10 @@ function ContactForm() {
       </Form.Group>
 
       <Form.Group className="form__group" controlId="emailAddress">
-        <Form.Label>Email address</Form.Label>
+        <Form.Label className="form__label">Email address *</Form.Label>
         <Form.Control
           className="form__input"
           type="email"
-          placeholder="ola@hello.com"
           {...register("email")}
         />
         {errors.email && (
@@ -97,11 +94,10 @@ function ContactForm() {
       </Form.Group>
 
       <Form.Group className="form__group" controlId="subject">
-        <Form.Label>Subject</Form.Label>
+        <Form.Label className="form__label">Subject *</Form.Label>
         <Form.Control
           className="form__input"
           type="text"
-          placeholder="name@example.com"
           {...register("subject")}
         />
         {errors.subject && (
@@ -112,7 +108,7 @@ function ContactForm() {
       </Form.Group>
 
       <Form.Group className="form__group" controlId="message">
-        <Form.Label>Message</Form.Label>
+        <Form.Label className="form__label">Message *</Form.Label>
         <Form.Control
           className="form__input"
           as="textarea"

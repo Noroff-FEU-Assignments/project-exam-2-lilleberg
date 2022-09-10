@@ -38,7 +38,7 @@ span,
 label,
 a {
   color: #0e0e11;
-  margin: 0px;
+  margin: 0;
 }
 
 a {
@@ -65,20 +65,18 @@ label {
 }
 
 p,
-a {
+a,
+.btn {
   font-weight: 300;
-}
-
-p {
-  font-size: 1.1rem;
-}
-
-label {
-  font-size: 1rem;
 }
 
 .btn {
   font-weight: 400;
+}
+
+p,
+.form__input,
+.form__label {
   font-size: 1.1rem;
 }
 
@@ -106,6 +104,64 @@ h3 {
 .nav__link {
   font-size: 1.3rem;
   color: #ffffff;
+}
+
+.btn {
+  min-width: 100px;
+  border: 2px solid #006164;
+  color: #006164;
+  background-color: #ffffff;
+  padding: 5px 10px;
+  box-shadow: 3px 3px 5px #9f9f9f;
+}
+.btn:hover {
+  color: #ffffff;
+  background-color: #006164;
+  border: 2px solid #006164;
+}
+
+.form {
+  max-width: 350px;
+  align-items: flex-start;
+  gap: 20px;
+}
+.form__group {
+  width: 100%;
+}
+.form__label {
+  margin-bottom: 5px;
+}
+.form__input {
+  border: 1px solid #006164;
+  border-radius: 3px;
+  box-shadow: 3px 3px 5px #9f9f9f;
+  padding-left: 5px;
+  height: 2.5rem;
+}
+.form__input:focus {
+  border: 2px solid #006164;
+}
+.form textarea {
+  min-height: 80px;
+}
+.form .input-error {
+  margin-top: 5px;
+}
+.form .btn--submit {
+  margin-top: 20px;
+}
+
+.form-error {
+  border: 2px solid #980505;
+  border-radius: 3px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.input-error {
+  font-size: 0.9rem;
+  color: #980505;
+  font-weight: 400;
 }
 
 .nav {
@@ -185,35 +241,4 @@ h3 {
 
 .form-control {
   border: none;
-}
-
-.btn {
-  min-width: 100px;
-  border: 2px solid #006164;
-  color: #006164;
-  background-color: #ffffff;
-  padding: 5px 10px;
-  box-shadow: 3px 3px 5px #9f9f9f;
-}
-.btn:hover {
-  color: #ffffff;
-  background-color: #006164;
-  border: 2px solid #006164;
-}
-
-.form {
-  max-width: 350px;
-  align-items: flex-start;
-}
-.form__group {
-  width: 100%;
-}
-.form__input {
-  border: 2px solid #006164;
-}
-
-.input-error {
-  font-size: 0.9rem;
-  color: #980505;
-  font-weight: 400;
 }/*# sourceMappingURL=styles.css.map */
