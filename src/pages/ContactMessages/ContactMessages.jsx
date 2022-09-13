@@ -20,7 +20,7 @@ function ContactMessages() {
     (async function () {
       try {
         const response = await http.get(apiEndpoint);
-        console.log("Response", response.data.data);
+        //console.log("Response", response.data.data);
 
         if (response.status === 200) setMessages(response.data.data);
       } catch (error) {

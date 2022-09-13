@@ -69,7 +69,10 @@ h3 {
   margin-bottom: $space-s;
 }
 
-// Navigation
+.semi-bold {
+  font-weight: 500;
+}
+
 .nav__link {
   font-size: 1.3rem;
   color: $white;
