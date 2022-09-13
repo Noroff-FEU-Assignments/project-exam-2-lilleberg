@@ -32,13 +32,14 @@ function ContactMessages() {
     })();
   }, []);
 
-  if (loading) return <Spinner animation="grow" />;
+  if (loading)
+    return <Spinner className="spinner d-flex mx-auto" animation="grow" />;
   if (error) return <FormError>Uh oh, an error occurred: {error}</FormError>;
 
   return (
     <Container className="container-main">
       <Heading content="Messages" />
-      <div className="messages">
+      <div className="message-container">
         {messages.map((message) => {
           const item = message.attributes;
           return (

@@ -31,7 +31,8 @@ function Home() {
     })();
   }, []);
 
-  if (loading) return <Spinner animation="grow" />;
+  if (loading)
+    return <Spinner className="spinner d-flex mx-auto" animation="grow" />;
   if (error)
     return (
       <FormError>Uh oh, an error occurred: {error}. Please refresh!</FormError>
@@ -41,15 +42,19 @@ function Home() {
   return (
     <>
       <div className="hero">
-        <img src={image.url} alt={image.alternativeText} className="" />
+        <img
+          src={image.url}
+          alt={image.alternativeText}
+          className="hero__img"
+        />
         <div className="hero__text">
           <Heading content="Welcome to Bergen" className="h1-home" />
         </div>
       </div>
-      <Container className="container-main">
+      <Container className="home">
         <Searchbar />
 
-        <section className="d-flex flex-column align-items-center">
+        <section className="home__stay d-flex flex-column align-items-center">
           <Heading size="2" content="Where to stay?" />
           <p>
             Holidaze has a great assortment of hotels, B&amp;B's and
@@ -60,9 +65,9 @@ function Home() {
           </NavLink>
         </section>
 
-        <section className="d-flex flex-column align-items-center">
+        <section className="home__member d-flex flex-column align-items-center">
           <Heading size="3" content="Member?" />
-          <p>
+          <p className="text-center">
             Did you know members can collect bonus points to get discounts on
             bookings? Become a Daze member now!
           </p>

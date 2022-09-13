@@ -5,3 +5,10 @@ button:active {
   outline: 0px !important;
   box-shadow: none !important;
 }
+
+.spinner {
+  width: 100px;
+  height: 100px;
+  margin-top: 60px;
+  background-color: $primary;
+}

@@ -1,18 +1,29 @@
+.h1-home {
+  margin: 0;
+}
+
 .hero {
   background-color: rgb(39, 39, 39);
   height: 250px;
-  object-fit: cover;
   position: relative;
+
+  &__img {
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
+    filter: grayscale(20%);
+  }
 
   &__text > * {
     position: absolute;
+    width: 280px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: $white;
+    background-color: rgba(0, 0, 0, 0.473);
     border: 2px solid $white;
     padding: 20px;
-    width: 280px;
   }
 }
 
@@ -33,4 +44,24 @@
 
 .form-control:not(input, textarea) {
   border: none;
+}
+
+.home {
+  &__stay {
+    margin: $space-lg $space-md;
+
+    .btn {
+      margin-top: $space-md;
+    }
+  }
+
+  &__member {
+    background-color: $primary;
+    padding: $space-md;
+
+    h3,
+    p {
+      color: $white;
+    }
+  }
 }

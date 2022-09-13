@@ -71,6 +71,8 @@ function ContactForm() {
     reset();
   }
 
+  //NOT FINISHED YET
+
   return (
     <Form
       className="form d-flex flex-column mx-auto"

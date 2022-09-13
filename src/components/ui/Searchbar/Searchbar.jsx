@@ -9,7 +9,7 @@ function Searchbar() {
   const options = ["hello", "goodbye", "fart", "thanks"];
   const handleChange = (selected) => setSelected(selected);
   return (
-    <Form.Group>
+    <Form.Group className="home__search">
       <Typeahead
         id="basic-typeahead-single"
         className="searchbar"

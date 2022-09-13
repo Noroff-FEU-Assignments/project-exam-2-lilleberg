@@ -56,10 +56,6 @@ h1 {
   margin: $space-lg 0;
 }
 
-.h1-home {
-  margin: 0;
-}
-
 h2 {
   font-size: 2rem;
 }
@@ -68,9 +64,10 @@ h3 {
   font-size: 1.8rem;
 }
 
-/* h4 {
-  font-size: 1.5rem;
-} */
+h2,
+h3 {
+  margin-bottom: $space-s;
+}
 
 // Navigation
 .nav__link {

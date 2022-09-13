@@ -1,0 +1,34 @@
+.message {
+  &:not(:last-child) {
+    margin-bottom: $space-md;
+  }
+
+  &__head {
+    font-weight: 500;
+    background-color: $primary !important;
+    color: $white;
+  }
+
+  &__head,
+  &__data {
+    min-width: 170px;
+    border-left: 1px solid rgb(167, 167, 167);
+    border-right: 1px solid rgb(167, 167, 167);
+  }
+
+  th:nth-child(6),
+  td:nth-child(6) {
+    min-width: 250px;
+  }
+
+  th {
+    border: $border-thin;
+  }
+
+  tbody {
+    border-color: $primary;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+}
