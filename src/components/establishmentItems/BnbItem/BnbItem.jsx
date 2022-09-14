@@ -2,6 +2,7 @@ import Card from "react-bootstrap/Card";
 import Carousel from "react-bootstrap/Carousel";
 import { Link } from "react-router-dom";
 import Heading from "../../typography/Heading/Heading";
+import moment from "moment/moment";
 
 function BnbItem({
   name,
@@ -40,6 +41,10 @@ function BnbItem({
             <p>{rating}</p>
           </div>
         </div>
+        <p>
+          Available: {moment(dateFrom).format("DD.M.YYYY")} -{" "}
+          {moment(dateTo).format("DD.M.YYYY")}
+        </p>
         <p>{description}</p>
         <div className="d-flex justify-content-end">
           <Link className="btn" to="#">
