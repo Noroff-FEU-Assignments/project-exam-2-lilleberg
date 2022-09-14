@@ -71,7 +71,7 @@ function ContactForm() {
     reset();
   }
 
-  //NOT FINISHED YET
+  //NOT FINISHED YET - error and loading and response of form submitted
 
   return (
     <Form

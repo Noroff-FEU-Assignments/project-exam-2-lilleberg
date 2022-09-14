@@ -2,7 +2,7 @@ import Carousel from "react-bootstrap/Carousel";
 
 function ImageCarousel({ images }) {
   return (
-    <Carousel>
+    <Carousel fade>
       {images.map((image) => {
         return (
           <Carousel.Item key={image.id}>

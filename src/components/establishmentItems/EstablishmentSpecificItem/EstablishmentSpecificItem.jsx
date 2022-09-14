@@ -3,6 +3,7 @@ import Heading from "../../typography/Heading/Heading";
 import moment from "moment/moment";
 import ImageCarousel from "../../ui/ImageCarousel/ImageCarousel";
 import renderEstablishmentType from "../../../js/renderEstablishmentType";
+import { useState } from "react";
 
 function BnbItem({
   name,
@@ -16,6 +17,11 @@ function BnbItem({
   type,
 }) {
   /* ADD PROPTYPES */
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   return (
     <div className="mx-auto estab">
@@ -52,7 +58,7 @@ function BnbItem({
 
       <p className="bnb__description">{description}</p>
       <div className="d-flex justify-content-end">
-        <Button className="btn estab__btn" to="#">
+        <Button className="btn estab__btn" onClick={handleShow}>
           Make a request
         </Button>
       </div>
