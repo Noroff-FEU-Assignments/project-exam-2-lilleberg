@@ -21,7 +21,6 @@ function Establishments() {
     (async function () {
       try {
         const response = await axios.get(url);
-        console.log(response.data.data);
 
         if (response.status === 200) setEstablishments(response.data.data);
       } catch (error) {
@@ -65,6 +64,7 @@ function Establishments() {
                   rating={item.rating}
                   price={item.price}
                   description={item.description}
+                  type={item.type}
                 />
               </Link>
             </Col>

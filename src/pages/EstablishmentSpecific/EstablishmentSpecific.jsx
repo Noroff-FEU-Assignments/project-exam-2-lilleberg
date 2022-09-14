@@ -5,7 +5,7 @@ import Spinner from "react-bootstrap/Spinner";
 import axios from "axios";
 import FormError from "../../components/forms/FormError/FormError";
 import Container from "../../components/layout/Container/Container";
-import BnbItem from "../../components/establishmentItems/EstablishmentSpecificItem/EstablishmentSpecificItem";
+import EstablishmentSpecificItem from "../../components/establishmentItems/EstablishmentSpecificItem/EstablishmentSpecificItem";
 
 function EstablishmentSpecific() {
   const [establishment, setEstablishment] = useState(null);
@@ -56,21 +56,19 @@ function EstablishmentSpecific() {
   } = establishment;
 
   return (
-    <div>
-      <Container className="container-main">
-        <BnbItem
-          name={name}
-          images={images.data}
-          description={description}
-          price={price}
-          dateFrom={dateFrom}
-          dateTo={dateTo}
-          rating={rating}
-          roomsAvailable={roomsAvailable}
-          type={type}
-        />
-      </Container>
-    </div>
+    <Container className="container-main">
+      <EstablishmentSpecificItem
+        name={name}
+        images={images.data}
+        description={description}
+        price={price}
+        dateFrom={dateFrom}
+        dateTo={dateTo}
+        rating={rating}
+        roomsAvailable={roomsAvailable}
+        type={type}
+      />
+    </Container>
   );
 }
 

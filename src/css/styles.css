@@ -314,7 +314,7 @@ h3 {
 
 .establishment {
   width: auto;
-  max-width: 350px;
+  max-width: 400px;
 }
 .establishment .card {
   box-shadow: 3px 3px 5px #9f9f9f;
@@ -342,4 +342,26 @@ h3 {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   overflow: hidden;
+}
+
+.estab {
+  max-width: 800px;
+}
+.estab__img {
+  height: 20rem;
+  width: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.estab__price-rating {
+  margin: 10px 0;
+}
+.estab h2 {
+  margin-top: 20px;
+}
+.estab__type-rooms {
+  margin-bottom: 10px;
+}
+.estab__btn {
+  margin-top: 40px;
 }/*# sourceMappingURL=styles.css.map */

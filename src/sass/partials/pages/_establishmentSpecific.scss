@@ -1,0 +1,25 @@
+.estab {
+  max-width: 800px;
+
+  &__img {
+    height: 20rem;
+    width: auto;
+    object-fit: cover;
+  }
+
+  &__price-rating {
+    margin: $space-sm 0;
+  }
+
+  h2 {
+    margin-top: $space-md;
+  }
+
+  &__type-rooms {
+    margin-bottom: $space-sm;
+  }
+
+  &__btn {
+    margin-top: $space-lg;
+  }
+}
