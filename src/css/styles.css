@@ -13,6 +13,10 @@ button:active {
   background-color: #006164;
 }
 
+.bi-star-fill {
+  color: #006164;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -302,4 +306,40 @@ h3 {
 }
 .message tbody {
   border-color: #006164;
+}
+
+.establishments-container {
+  gap: 40px;
+}
+
+.establishment {
+  width: auto;
+  max-width: 350px;
+}
+.establishment .card {
+  box-shadow: 3px 3px 5px #9f9f9f;
+  border-radius: 3px;
+  border-color: rgb(214, 214, 214);
+}
+.establishment .card-body {
+  padding: 10px;
+}
+.establishment__img {
+  width: 100%;
+  height: 250px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.establishment__rating {
+  gap: 5px;
+}
+.establishment__price {
+  margin-bottom: 10px;
+}
+.establishment__description {
+  width: auto;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 }/*# sourceMappingURL=styles.css.map */

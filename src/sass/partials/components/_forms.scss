@@ -7,7 +7,7 @@
     width: 100%;
 
     &--firstName {
-      margin-right: $space-s;
+      margin-right: $space-sm;
     }
   }
 
@@ -44,7 +44,7 @@
 .form-error {
   border: $border-error;
   border-radius: $border-radius;
-  padding: $space-s;
+  padding: $space-sm;
   margin-bottom: $space-md;
 }
 

@@ -4,7 +4,7 @@ import Heading from "../../components/typography/Heading/Heading";
 import useAxios from "../../hooks/useAxios";
 import Spinner from "react-bootstrap/Spinner";
 import FormError from "../../components/forms/FormError/FormError";
-import MessageItem from "../../messages/MessageItem/MessageItem";
+import MessageItem from "../../components/messages/MessageItem/MessageItem";
 import moment from "moment/moment";
 
 function ContactMessages() {
@@ -20,7 +20,6 @@ function ContactMessages() {
     (async function () {
       try {
         const response = await http.get(apiEndpoint);
-        //console.log("Response", response.data.data);
 
         if (response.status === 200) setMessages(response.data.data);
       } catch (error) {

@@ -8,7 +8,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Link } from "react-router-dom";
 import Container from "../../components/layout/Container/Container";
-import EstablishmentCard from "../../components/establishmentItems/EstablishmentItem/EstablishmentItem";
+import EstablishmentItem from "../../components/establishmentItems/EstablishmentItem/EstablishmentItem";
 
 function Establishments() {
   const [establishments, setEstablishments] = useState([]);
@@ -46,13 +46,19 @@ function Establishments() {
   return (
     <Container className="container-main">
       <Heading content="Establishments" />
-      <Row className="establishments-container mx-auto">
+      <Row className="establishments-container justify-content-center">
         {establishments.map((establishment) => {
           const item = establishment.attributes;
           return (
-            <Col key={establishment.id} md={6} lg={4} xl={3}>
+            <Col
+              key={establishment.id}
+              md={6}
+              lg={4}
+              xl={3}
+              className="establishment"
+            >
               <Link to={`/establishment/${establishment.id}`}>
-                <EstablishmentCard
+                <EstablishmentItem
                   image={item.featuredImage.data.attributes.url}
                   altText={item.featuredImage.data.attributes.alternativeText}
                   name={item.name}

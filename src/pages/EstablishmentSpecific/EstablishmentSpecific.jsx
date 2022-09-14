@@ -1,4 +1,3 @@
-import Heading from "../../components/typography/Heading/Heading";
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { BASE_URL } from "../../constants/api";
@@ -6,7 +5,7 @@ import Spinner from "react-bootstrap/Spinner";
 import axios from "axios";
 import FormError from "../../components/forms/FormError/FormError";
 import Container from "../../components/layout/Container/Container";
-import BnbItem from "../../components/establishmentItems/BnbItem/BnbItem";
+import BnbItem from "../../components/establishmentItems/EstablishmentSpecificItem/EstablishmentSpecificItem";
 
 function EstablishmentSpecific() {
   const [establishment, setEstablishment] = useState(null);
@@ -33,7 +32,7 @@ function EstablishmentSpecific() {
         setLoading(false);
       }
     })();
-  }, [url]);
+  }, []);
 
   if (loading)
     return <Spinner className="spinner d-flex mx-auto" animation="grow" />;
@@ -43,7 +42,6 @@ function EstablishmentSpecific() {
         Uh oh, an error occurred: {error}. Please try to refresh!
       </FormError>
     );
-  console.log(establishment);
 
   const {
     name,
@@ -54,12 +52,12 @@ function EstablishmentSpecific() {
     dateFrom,
     rating,
     roomsAvailable,
+    type,
   } = establishment;
 
   return (
     <div>
       <Container className="container-main">
-        <Heading content="Establishment Name" />
         <BnbItem
           name={name}
           images={images.data}
@@ -69,6 +67,7 @@ function EstablishmentSpecific() {
           dateTo={dateTo}
           rating={rating}
           roomsAvailable={roomsAvailable}
+          type={type}
         />
       </Container>
     </div>

@@ -2,7 +2,7 @@ import Card from "react-bootstrap/Card";
 import Heading from "../../typography/Heading/Heading";
 import PropTypes from "prop-types";
 
-function EstablishmentCard({
+function EstablishmentItem({
   image,
   altText,
   name,
@@ -11,7 +11,7 @@ function EstablishmentCard({
   description,
 }) {
   return (
-    <Card className="establishment">
+    <Card>
       <Card.Img
         variant="top"
         src={image}
@@ -28,16 +28,18 @@ function EstablishmentCard({
             <p>{rating}</p>
           </div>
         </div>
-        <Card.Text>
+        <Card.Text className="establishment__price">
           <span className="semi-bold">{price} NOK</span> night
         </Card.Text>
-        <Card.Text>{description}</Card.Text>
+        <Card.Text className="establishment__description">
+          {description}
+        </Card.Text>
       </Card.Body>
     </Card>
   );
 }
 
-EstablishmentCard.propTypes = {
+EstablishmentItem.propTypes = {
   image: PropTypes.string.isRequired,
   altText: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
@@ -46,4 +48,4 @@ EstablishmentCard.propTypes = {
   description: PropTypes.string.isRequired,
 };
 
-export default EstablishmentCard;
+export default EstablishmentItem;
