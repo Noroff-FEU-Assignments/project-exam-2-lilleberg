@@ -30,12 +30,15 @@ function EstablishmentItem({
             <p>{rating}</p>
           </div>
         </div>
-        <Card.Text>
-          {renderEstablishmentType(type, "estab__type semi-bold")}
-        </Card.Text>
-        <Card.Text className="establishment__price">
-          <span className="semi-bold">{price} NOK</span> night
-        </Card.Text>
+
+        <div className="establishment__price-type d-flex justify-content-between">
+          <Card.Text className="establishment__price">
+            <span className="semi-bold">{price} NOK</span> night
+          </Card.Text>
+          <Card.Text>
+            {renderEstablishmentType(type, "estab__type semi-bold")}
+          </Card.Text>
+        </div>
 
         <Card.Text className="establishment__description">
           {description}

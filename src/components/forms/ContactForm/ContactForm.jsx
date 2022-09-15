@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import FormError from "../FormError/FormError";
@@ -58,6 +58,7 @@ function ContactForm() {
       const response = await axios.post(url, options);
       console.log(response);
 
+      /*CHANGE THESE*/
       if (response.status === 200) alert("Form submitted");
       if (response.error) alert("An error occurred");
     } catch (error) {
@@ -151,6 +152,7 @@ function ContactForm() {
           </FormError>
         )}
       </Form.Group>
+
       <Button className="btn btn--submit align-self-center" type="submit">
         Submit
       </Button>

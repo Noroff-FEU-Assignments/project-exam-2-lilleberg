@@ -41,6 +41,19 @@
   }
 }
 
+.enquiry-form {
+  padding: $space-lg $space-sm;
+  max-width: 420px;
+
+  h1 {
+    margin-top: 0;
+  }
+}
+
+.modal {
+  margin: $space-sm 0;
+}
+
 .form-error {
   border: $border-error;
   border-radius: $border-radius;
