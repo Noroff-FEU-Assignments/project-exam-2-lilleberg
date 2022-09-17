@@ -84,7 +84,9 @@ function ContactForm() {
           className="form__group form__group--firstName"
           controlId="firstName"
         >
-          <Form.Label className="form__label">First name *</Form.Label>
+          <Form.Label className="form__label">
+            First name <span className="form__required">*</span>
+          </Form.Label>
           <Form.Control
             className="form__input"
             type="text"
@@ -98,7 +100,9 @@ function ContactForm() {
         </Form.Group>
 
         <Form.Group className="form__group" controlId="lastName">
-          <Form.Label className="form__label">Last name *</Form.Label>
+          <Form.Label className="form__label">
+            Last name <span className="form__required">*</span>
+          </Form.Label>
           <Form.Control
             className="form__input"
             type="text"
@@ -113,7 +117,9 @@ function ContactForm() {
       </div>
 
       <Form.Group className="form__group" controlId="emailAddress">
-        <Form.Label className="form__label">Email address *</Form.Label>
+        <Form.Label className="form__label">
+          Email address <span className="form__required">*</span>
+        </Form.Label>
         <Form.Control
           className="form__input"
           type="email"
@@ -125,7 +131,9 @@ function ContactForm() {
       </Form.Group>
 
       <Form.Group className="form__group" controlId="subject">
-        <Form.Label className="form__label">Subject *</Form.Label>
+        <Form.Label className="form__label">
+          Subject <span className="form__required">*</span>
+        </Form.Label>
         <Form.Control
           className="form__input"
           type="text"
@@ -139,7 +147,9 @@ function ContactForm() {
       </Form.Group>
 
       <Form.Group className="form__group" controlId="message">
-        <Form.Label className="form__label">Message *</Form.Label>
+        <Form.Label className="form__label">
+          Message <span className="form__required">*</span>
+        </Form.Label>
         <Form.Control
           className="form__input"
           as="textarea"

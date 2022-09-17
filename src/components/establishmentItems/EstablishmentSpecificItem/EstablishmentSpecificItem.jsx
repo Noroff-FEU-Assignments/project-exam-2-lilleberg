@@ -1,12 +1,11 @@
 import Button from "react-bootstrap/Button";
 import Heading from "../../typography/Heading/Heading";
-import moment from "moment/moment";
 import ImageCarousel from "../../ui/ImageCarousel/ImageCarousel";
 import renderEstablishmentType from "../../../js/renderEstablishmentType";
 import { useState } from "react";
 import EnquiryModal from "../../ui/EnquiryModal/EnquiryModal";
 
-function BnbItem({
+function EstablishmentSpecificItem({
   name,
   images,
   description,
@@ -63,4 +62,4 @@ function BnbItem({
   );
 }
 
-export default BnbItem;
+export default EstablishmentSpecificItem;

@@ -35,9 +35,7 @@ function EstablishmentItem({
           <Card.Text className="establishment__price">
             <span className="semi-bold">{price} NOK</span> night
           </Card.Text>
-          <Card.Text>
-            {renderEstablishmentType(type, "estab__type semi-bold")}
-          </Card.Text>
+          {renderEstablishmentType(type, "estab__type semi-bold")}
         </div>
 
         <Card.Text className="establishment__description">

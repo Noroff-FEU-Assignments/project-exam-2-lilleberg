@@ -141,11 +141,17 @@ h3 {
 .form__group {
   width: 100%;
 }
-.form__group--firstName {
+.form__group--firstName, .form__group--dateFrom {
   margin-right: 10px;
+}
+.form__group--number {
+  width: 180px;
 }
 .form__label {
   margin-bottom: 5px;
+}
+.form__date-label {
+  font-size: 1.1rem;
 }
 .form__input {
   border: 1px solid #006164;
@@ -165,6 +171,9 @@ h3 {
 }
 .form .btn--submit {
   margin-top: 20px;
+}
+.form__required {
+  color: #980505;
 }
 
 .enquiry-form {

@@ -6,13 +6,22 @@
   &__group {
     width: 100%;
 
-    &--firstName {
+    &--firstName,
+    &--dateFrom {
       margin-right: $space-sm;
+    }
+
+    &--number {
+      width: 180px;
     }
   }
 
   &__label {
     margin-bottom: $space-xs;
+  }
+
+  &__date-label {
+    font-size: 1.1rem;
   }
 
   &__input {
@@ -38,6 +47,10 @@
 
   .btn--submit {
     margin-top: $space-md;
+  }
+
+  &__required {
+    color: $error-red;
   }
 }
 
