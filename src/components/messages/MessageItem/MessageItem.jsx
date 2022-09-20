@@ -9,26 +9,26 @@ function MessageItem({
   dateTime,
 }) {
   return (
-    <div className="message">
+    <div className="message table-container mx-auto">
       <Table responsive>
         <thead>
           <tr>
-            <th className="message__head">Date/time</th>
-            <th className="message__head">Subject</th>
-            <th className="message__head">First name</th>
-            <th className="message__head">Last name</th>
-            <th className="message__head">Email</th>
-            <th className="message__head">Message</th>
+            <th className="table__head">Date/time</th>
+            <th className="table__head">Subject</th>
+            <th className="table__head">First name</th>
+            <th className="table__head">Last name</th>
+            <th className="table__head">Email</th>
+            <th className="table__head">Message</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td className="message__data">{dateTime}</td>
-            <td className="message__data">{subject}</td>
-            <td className="message__data">{firstName}</td>
-            <td className="message__data">{lastName}</td>
-            <td className="message__data">{email}</td>
-            <td className="message__data">{message}</td>
+            <td className="table__data">{dateTime}</td>
+            <td className="table__data">{subject}</td>
+            <td className="table__data">{firstName}</td>
+            <td className="table__data">{lastName}</td>
+            <td className="table__data">{email}</td>
+            <td className="table__data">{message}</td>
           </tr>
         </tbody>
       </Table>

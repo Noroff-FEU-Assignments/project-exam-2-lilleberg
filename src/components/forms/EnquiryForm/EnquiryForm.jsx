@@ -11,31 +11,6 @@ import Button from "react-bootstrap/Button";
 import getDate from "../../../js/getDate";
 import { useParams } from "react-router-dom";
 
-function findEstablishment(id) {
-  (async function () {
-    const url = BASE_URL + "establishments";
-    let estabName = "";
-    console.log(id);
-
-    try {
-      const response = await axios.get(url);
-      if (response.status === 200) {
-        const establishments = response.data.data;
-
-        const elem = establishments.find((item) => item.id === id);
-
-        estabName = elem.attributes.name;
-        console.log(estabName);
-      }
-      return estabName;
-    } catch (error) {
-      console.log(error);
-    }
-  })();
-}
-
-console.log("FUNCTION CALL", findEstablishment(38));
-
 const schema = yup.object().shape({
   firstName: yup
     .string()
@@ -57,12 +32,12 @@ const schema = yup.object().shape({
     .email("Please enter a valid email"),
   dateFrom: yup
     .date()
-    .required("Please pick a date")
-    .typeError("Please pick a date"),
+    .required("Please select a date")
+    .typeError("Please select a date"),
   dateTo: yup
     .date()
-    .required("Please pick a date")
-    .typeError("Please pick a date"),
+    .required("Please select a date")
+    .typeError("Please select a date"),
   message: yup.string().trim(),
 });
 
@@ -70,13 +45,27 @@ function EnquiryForm() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [name, setName] = useState({});
 
   const { id } = useParams();
-
-  /* const estabName = findEstablishment(id);
-  console.log("FORM LOG", estabName); */
-
   const url = BASE_URL + "enquiries";
+
+  //Get establishment's name for form
+  useEffect(() => {
+    (async function () {
+      try {
+        const response = await axios.get(BASE_URL + "establishments/" + id);
+
+        if (response.status === 200) {
+          setName(response.data.data.attributes.name);
+        } else {
+          setName("Unknown");
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, []);
 
   const {
     register,
@@ -98,6 +87,7 @@ function EnquiryForm() {
         dateTo: data.dateTo,
         message: data.message,
         estabID: id,
+        establishment: name,
       },
     };
 
@@ -125,7 +115,7 @@ function EnquiryForm() {
       className="form enquiry-form d-flex flex-column mx-auto"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <Heading content="Booking Enquiry Form" />
+      <Heading content={`${name} - Booking Enquiry`} />
 
       <div className="form__fullName d-flex">
         <Form.Group

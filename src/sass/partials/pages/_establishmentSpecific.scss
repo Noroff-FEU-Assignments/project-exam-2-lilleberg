@@ -23,6 +23,10 @@
     margin-top: $space-lg;
   }
 
+  &__rating {
+    gap: $space-xs;
+  }
+
   .carousel {
     .carousel-control-prev,
     .carousel-control-next {

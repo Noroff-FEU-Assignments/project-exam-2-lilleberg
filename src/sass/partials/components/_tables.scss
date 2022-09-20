@@ -1,0 +1,35 @@
+.table-container {
+  max-width: 1000px;
+  &:not(:last-child) {
+    margin-bottom: $space-md;
+  }
+
+  .table {
+    &__head {
+      font-weight: 500;
+      background-color: $primary !important;
+      color: $white;
+    }
+
+    th,
+    td {
+      width: 100%;
+      white-space: nowrap;
+      border-left: 1px solid rgb(167, 167, 167);
+      border-right: 1px solid rgb(167, 167, 167);
+    }
+
+    th:last-child,
+    td:last-child {
+      max-width: 250px;
+    }
+
+    th {
+      border: $border-thin;
+    }
+
+    tbody {
+      border-color: $primary;
+    }
+  }
+}

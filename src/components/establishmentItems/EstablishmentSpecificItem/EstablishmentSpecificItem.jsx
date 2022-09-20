@@ -31,7 +31,7 @@ function EstablishmentSpecificItem({
           <p>
             <span className="semi-bold">{price} NOK </span>night
           </p>
-          <div className="d-flex align-items-baseline">
+          <div className="d-flex align-items-baseline estab__rating">
             <i className="bi bi-star-fill" aria-label="Rating"></i>
             <p>{rating}</p>
           </div>
