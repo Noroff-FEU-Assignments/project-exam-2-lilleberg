@@ -91,8 +91,6 @@ function EnquiryForm() {
       },
     };
 
-    console.log("Options", options);
-
     try {
       const response = await axios.post(url, options);
 

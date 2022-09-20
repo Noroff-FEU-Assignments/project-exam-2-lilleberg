@@ -31,8 +31,6 @@ function Enquiries() {
     })();
   }, []);
 
-  console.log(enquiries);
-
   if (loading)
     return <Spinner className="spinner d-flex mx-auto" animation="grow" />;
   if (error) return <FormError>Uh oh, an error occurred: {error}</FormError>;
@@ -43,7 +41,6 @@ function Enquiries() {
       <div className="enquiries-container">
         {enquiries.map((enquiry) => {
           const item = enquiry.attributes;
-          console.log(item);
           return (
             <EnquiryItem
               key={item.id}

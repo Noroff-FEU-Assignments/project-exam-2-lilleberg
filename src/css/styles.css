@@ -316,7 +316,7 @@ h3 {
   border: 2px solid #006164;
 }
 
-.form-control:not(input, textarea) {
+.form-control:not(input, select, textarea) {
   border: none;
 }
 

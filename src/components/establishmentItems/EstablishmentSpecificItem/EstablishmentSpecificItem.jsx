@@ -1,7 +1,6 @@
 import Button from "react-bootstrap/Button";
 import Heading from "../../typography/Heading/Heading";
 import ImageCarousel from "../../ui/ImageCarousel/ImageCarousel";
-import renderEstablishmentType from "../../../js/renderEstablishmentType";
 import { useState } from "react";
 import EnquiryModal from "../../ui/EnquiryModal/EnquiryModal";
 
@@ -39,7 +38,7 @@ function EstablishmentSpecificItem({
 
         <Heading size="2" content="Description" />
         <div className="estab__type-rooms">
-          {renderEstablishmentType(type, "estab__type semi-bold")}
+          <p className="estab__type semi-bold">{type}</p>
 
           {roomsAvailable ? (
             <p>

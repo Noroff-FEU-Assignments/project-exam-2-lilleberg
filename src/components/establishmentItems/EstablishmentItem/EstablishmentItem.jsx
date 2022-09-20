@@ -1,7 +1,6 @@
 import Card from "react-bootstrap/Card";
 import Heading from "../../typography/Heading/Heading";
 import PropTypes from "prop-types";
-import renderEstablishmentType from "../../../js/renderEstablishmentType";
 
 function EstablishmentItem({
   image,
@@ -35,7 +34,7 @@ function EstablishmentItem({
           <Card.Text className="establishment__price">
             <span className="semi-bold">{price} NOK</span> night
           </Card.Text>
-          {renderEstablishmentType(type, "estab__type semi-bold")}
+          <Card.Text className="estab__type semi-bold">{type}</Card.Text>
         </div>
 
         <Card.Text className="establishment__description">

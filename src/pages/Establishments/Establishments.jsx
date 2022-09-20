@@ -37,8 +37,7 @@ function Establishments() {
   if (error)
     return (
       <FormError>
-        Uh oh, an error occurred: {error.response.statusText}. Please try to
-        refresh!
+        Uh oh, an error occurred: {error}. Please try to refresh!
       </FormError>
     );
 

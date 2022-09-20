@@ -42,7 +42,7 @@
   }
 }
 
-.form-control:not(input, textarea) {
+.form-control:not(input, select, textarea) {
   border: none;
 }
 
