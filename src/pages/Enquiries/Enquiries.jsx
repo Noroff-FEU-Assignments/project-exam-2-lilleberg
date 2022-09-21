@@ -3,9 +3,9 @@ import Container from "../../components/layout/Container/Container";
 import Heading from "../../components/typography/Heading/Heading";
 import useAxios from "../../hooks/useAxios";
 import { Spinner } from "react-bootstrap";
-import FormError from "../../components/forms/FormError/FormError";
 import moment from "moment/moment";
 import EnquiryItem from "../../components/messages/EnquiryItem/EnquiryItem";
+import ResponseMessage from "../../components/ui/ResponseMessage/ResponseMessage";
 
 function Enquiries() {
   const [enquiries, setEnquiries] = useState([]);
@@ -24,7 +24,7 @@ function Enquiries() {
         if (response.status === 200) setEnquiries(response.data.data);
       } catch (error) {
         console.log(error);
-        setError(error.toString());
+        setError("Uh oh an error occurred. Please try to refresh!");
       } finally {
         setLoading(false);
       }
@@ -33,7 +33,7 @@ function Enquiries() {
 
   if (loading)
     return <Spinner className="spinner d-flex mx-auto" animation="grow" />;
-  if (error) return <FormError>Uh oh, an error occurred: {error}</FormError>;
+  if (error) return <ResponseMessage>{error}</ResponseMessage>;
 
   return (
     <Container className="container-main">

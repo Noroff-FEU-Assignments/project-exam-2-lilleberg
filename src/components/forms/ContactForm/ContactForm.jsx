@@ -1,7 +1,6 @@
 import { useState } from "react";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import FormError from "../FormError/FormError";
 import { useForm } from "react-hook-form";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -112,9 +111,9 @@ function ContactForm() {
             {...register("firstName")}
           />
           {errors.firstName && (
-            <FormError className="input-error">
+            <ResponseMessage className="input-error">
               {errors.firstName.message}
-            </FormError>
+            </ResponseMessage>
           )}
         </Form.Group>
 
@@ -128,9 +127,9 @@ function ContactForm() {
             {...register("lastName")}
           />
           {errors.lastName && (
-            <FormError className="input-error">
+            <ResponseMessage className="input-error">
               {errors.lastName.message}
-            </FormError>
+            </ResponseMessage>
           )}
         </Form.Group>
       </div>
@@ -145,7 +144,9 @@ function ContactForm() {
           {...register("email")}
         />
         {errors.email && (
-          <FormError className="input-error">{errors.email.message}</FormError>
+          <ResponseMessage className="input-error">
+            {errors.email.message}
+          </ResponseMessage>
         )}
       </Form.Group>
 
@@ -159,9 +160,9 @@ function ContactForm() {
           {...register("subject")}
         />
         {errors.subject && (
-          <FormError className="input-error">
+          <ResponseMessage className="input-error">
             {errors.subject.message}
-          </FormError>
+          </ResponseMessage>
         )}
       </Form.Group>
 
@@ -176,9 +177,9 @@ function ContactForm() {
           {...register("message")}
         />
         {errors.message && (
-          <FormError className="input-error">
+          <ResponseMessage className="input-error">
             {errors.message.message}
-          </FormError>
+          </ResponseMessage>
         )}
       </Form.Group>
 

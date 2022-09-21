@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 import { BASE_URL } from "../../constants/api";
 import axios from "axios";
 import Spinner from "react-bootstrap/Spinner";
-import FormError from "../../components/forms/FormError/FormError";
+import ResponseMessage from "../../components/ui/ResponseMessage/ResponseMessage";
 
 function Home() {
   const [image, setImage] = useState([]);
@@ -24,7 +24,7 @@ function Home() {
           setImage(response.data.data.attributes.hero.data.attributes);
       } catch (error) {
         console.log(error);
-        setError(error.toString());
+        setError("Uh oh, an error occurred. Please try to refresh!");
       } finally {
         setLoading(false);
       }
@@ -33,11 +33,7 @@ function Home() {
 
   if (loading)
     return <Spinner className="spinner d-flex mx-auto" animation="grow" />;
-  if (error)
-    return (
-      <FormError>Uh oh, an error occurred: {error}. Please refresh!</FormError>
-    );
-  //EDIT FORMERROR TO BE ERROR BECAUSE MORE USE THAN FORMS
+  if (error) return <ResponseMessage>{error}</ResponseMessage>;
 
   return (
     <>

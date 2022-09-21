@@ -3,9 +3,9 @@ import Container from "../../components/layout/Container/Container";
 import Heading from "../../components/typography/Heading/Heading";
 import useAxios from "../../hooks/useAxios";
 import Spinner from "react-bootstrap/Spinner";
-import FormError from "../../components/forms/FormError/FormError";
 import MessageItem from "../../components/messages/MessageItem/MessageItem";
 import moment from "moment/moment";
+import ResponseMessage from "../../components/ui/ResponseMessage/ResponseMessage";
 
 function ContactMessages() {
   const [messages, setMessages] = useState([]);
@@ -24,7 +24,7 @@ function ContactMessages() {
         if (response.status === 200) setMessages(response.data.data);
       } catch (error) {
         console.log(error);
-        setError(error.toString());
+        setError("Uh oh, an error occurred. Please try to refresh.");
       } finally {
         setLoading(false);
       }
@@ -33,7 +33,7 @@ function ContactMessages() {
 
   if (loading)
     return <Spinner className="spinner d-flex mx-auto" animation="grow" />;
-  if (error) return <FormError>Uh oh, an error occurred: {error}</FormError>;
+  if (error) return <ResponseMessage>{error}</ResponseMessage>;
 
   return (
     <Container className="container-main">

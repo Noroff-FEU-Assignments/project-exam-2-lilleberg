@@ -8,7 +8,6 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { BASE_URL, TOKEN_PATH } from "../../../constants/api";
 import AuthContext from "../../../context/AuthContext";
-import FormError from "../FormError/FormError";
 import ResponseMessage from "../../ui/ResponseMessage/ResponseMessage";
 import { Spinner } from "react-bootstrap";
 
@@ -87,9 +86,9 @@ function LoginForm() {
           {...register("username")}
         />
         {errors.username && (
-          <FormError className="input-error">
+          <ResponseMessage className="input-error">
             {errors.username.message}
-          </FormError>
+          </ResponseMessage>
         )}
       </Form.Group>
 
@@ -102,9 +101,9 @@ function LoginForm() {
           {...register("password")}
         />
         {errors.password && (
-          <FormError className="input-error">
+          <ResponseMessage className="input-error">
             {errors.password.message}
-          </FormError>
+          </ResponseMessage>
         )}
       </Form.Group>
 
