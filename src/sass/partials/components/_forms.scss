@@ -43,6 +43,9 @@
 
   .input-error {
     margin-top: $space-xs;
+    font-size: 0.9rem;
+    color: $error-red;
+    font-weight: 400;
   }
 
   .btn--submit {
@@ -66,17 +69,4 @@
 .modal {
   margin: $space-sm 0;
   padding-bottom: $space-md;
-}
-
-.form-error {
-  border: $border-error;
-  border-radius: $border-radius;
-  padding: $space-sm;
-  margin-bottom: $space-md;
-}
-
-.input-error {
-  font-size: 0.9rem;
-  color: $error-red;
-  font-weight: 400;
 }

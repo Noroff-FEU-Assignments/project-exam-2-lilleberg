@@ -3,6 +3,7 @@ import Heading from "../../typography/Heading/Heading";
 import ImageCarousel from "../../ui/ImageCarousel/ImageCarousel";
 import { useState } from "react";
 import EnquiryModal from "../../ui/EnquiryModal/EnquiryModal";
+import PropTypes from "prop-types";
 
 function EstablishmentSpecificItem({
   name,
@@ -13,8 +14,6 @@ function EstablishmentSpecificItem({
   roomsAvailable,
   type,
 }) {
-  /* ADD PROPTYPES */
-
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -60,5 +59,15 @@ function EstablishmentSpecificItem({
     </>
   );
 }
+
+EstablishmentSpecificItem.propTypes = {
+  name: PropTypes.string.isRequired,
+  images: PropTypes.array.isRequired,
+  description: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  rating: PropTypes.number.isRequired,
+  roomsAvailable: PropTypes.number.isRequired,
+  type: PropTypes.string.isRequired,
+};
 
 export default EstablishmentSpecificItem;

@@ -1,6 +1,6 @@
 import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
 import EnquiryForm from "../../forms/EnquiryForm/EnquiryForm";
+import PropTypes from "prop-types";
 
 function EnquiryModal({ show, handleClose }) {
   return (
@@ -9,5 +9,10 @@ function EnquiryModal({ show, handleClose }) {
     </Modal>
   );
 }
+
+EnquiryModal.propTypes = {
+  show: PropTypes.bool.isRequired,
+  handleClose: PropTypes.bool.isRequired,
+};
 
 export default EnquiryModal;

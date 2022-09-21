@@ -1,7 +1,11 @@
 input:focus,
 input:active,
 button:focus,
-button:active {
+button:active,
+select:focus,
+select:active,
+textarea:focus,
+textarea:active {
   outline: 0px !important;
   box-shadow: none !important;
 }
@@ -11,8 +15,29 @@ button:active {
   height: 100px;
   margin-top: 60px;
   background-color: $primary;
+
+  &--small {
+    width: 1.3rem;
+    height: 1.3rem;
+    margin: 0 $space-sm 0 0;
+    animation-duration: 1.1s;
+  }
 }
 
 .bi-star-fill {
   color: $primary;
+}
+
+.response-message {
+  &--informative {
+    font-size: 1.3rem;
+  }
+
+  &--form-error {
+    font-size: 1.2rem;
+    border: $border-error;
+    border-radius: $border-radius;
+    padding: $space-sm;
+    margin-bottom: $space-md;
+  }
 }

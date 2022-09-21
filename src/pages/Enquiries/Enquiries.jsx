@@ -39,11 +39,11 @@ function Enquiries() {
     <Container className="container-main">
       <Heading content="Enquiries" />
       <div className="enquiries-container">
-        {enquiries.map((enquiry) => {
+        {enquiries.map((enquiry, i) => {
           const item = enquiry.attributes;
           return (
             <EnquiryItem
-              key={item.id}
+              key={i.toString()}
               establishment={item.establishment}
               firstName={item.firstName}
               lastName={item.lastName}

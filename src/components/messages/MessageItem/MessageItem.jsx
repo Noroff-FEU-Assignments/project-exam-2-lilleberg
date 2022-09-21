@@ -1,4 +1,5 @@
 import Table from "react-bootstrap/Table";
+import PropTypes from "prop-types";
 
 function MessageItem({
   firstName,
@@ -35,5 +36,14 @@ function MessageItem({
     </div>
   );
 }
+
+MessageItem.propTypes = {
+  firstName: PropTypes.string.isRequired,
+  lastName: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  subject: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
+  dateTime: PropTypes.string.isRequired,
+};
 
 export default MessageItem;

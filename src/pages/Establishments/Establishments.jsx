@@ -23,6 +23,7 @@ function Establishments() {
         const response = await axios.get(url);
 
         if (response.status === 200) setEstablishments(response.data.data);
+        console.log(response.data.data);
       } catch (error) {
         console.log(error);
         setError(error.toString());
@@ -47,18 +48,13 @@ function Establishments() {
       <Row className="establishments-container justify-content-center">
         {establishments.map((establishment) => {
           const item = establishment.attributes;
+          const image = item.featuredImage.data.attributes;
           return (
-            <Col
-              key={establishment.id}
-              md={6}
-              lg={4}
-              xl={3}
-              className="establishment"
-            >
+            <Col key={establishment.id} md={6} xl={4} className="establishment">
               <Link to={`/establishment/${establishment.id}`}>
                 <EstablishmentItem
                   image={item.featuredImage.data.attributes.url}
-                  altText={item.featuredImage.data.attributes.alternativeText}
+                  altText={image.attributes ? image.attributes : image.name}
                   name={item.name}
                   rating={item.rating}
                   price={item.price}

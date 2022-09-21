@@ -8,6 +8,7 @@ import Login from "./pages/Login/Login";
 import ContactMessages from "./pages/ContactMessages/ContactMessages";
 import Enquiries from "./pages/Enquiries/Enquiries";
 import NewEstablishment from "./pages/NewEstablishment/NewEstablishment";
+import PageNotFound from "./pages/PageNotFound/PageNotFound";
 import Navigation from "./components/layout/Navigation/Navigation";
 import Footer from "./components/layout/Footer/Footer";
 import { AuthProvider } from "./context/AuthContext";
@@ -39,6 +40,7 @@ function App() {
               path="/admin/new-establishment"
               element={<NewEstablishment />}
             />
+            <Route path="*" element={<PageNotFound />} />
           </Routes>
         </main>
         <footer>

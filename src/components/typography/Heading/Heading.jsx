@@ -8,6 +8,7 @@ function Heading({ size = "1", content, className = "" }) {
 Heading.propTypes = {
   size: PropTypes.string,
   content: PropTypes.string.isRequired,
+  className: PropTypes.string,
 };
 
 export default Heading;

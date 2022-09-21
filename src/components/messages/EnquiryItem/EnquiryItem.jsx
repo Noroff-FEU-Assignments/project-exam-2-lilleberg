@@ -1,4 +1,5 @@
 import Table from "react-bootstrap/Table";
+import PropTypes from "prop-types";
 
 function EnquiryItem({
   establishment,
@@ -44,5 +45,17 @@ function EnquiryItem({
     </div>
   );
 }
+
+EnquiryItem.propTypes = {
+  establishment: PropTypes.string.isRequired,
+  firstName: PropTypes.string.isRequired,
+  lastName: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  dateFrom: PropTypes.string.isRequired,
+  dateTo: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
+  dateTime: PropTypes.string.isRequired,
+};
 
 export default EnquiryItem;

@@ -9,6 +9,8 @@ import axios from "axios";
 import { BASE_URL, TOKEN_PATH } from "../../../constants/api";
 import AuthContext from "../../../context/AuthContext";
 import FormError from "../FormError/FormError";
+import ResponseMessage from "../../ui/ResponseMessage/ResponseMessage";
+import { Spinner } from "react-bootstrap";
 
 const url = BASE_URL + TOKEN_PATH;
 
@@ -23,7 +25,7 @@ const schema = yup.object().shape({
 function LoginForm() {
   const [submitting, setSubmitting] = useState(false);
   const [loginError, setLoginError] = useState(null);
-  const [auth, setAuth] = useContext(AuthContext);
+  const [, setAuth] = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -38,7 +40,6 @@ function LoginForm() {
   async function onSubmit(data) {
     setSubmitting(true);
     setLoginError(null);
-    console.log(data);
 
     const options = {
       identifier: data.username,
@@ -47,14 +48,12 @@ function LoginForm() {
 
     try {
       const response = await axios.post(url, options);
-      console.log("Response:", response);
 
       if (response.status === 200) {
         setAuth(response.data);
         navigate("/admin/new-establishment");
       }
     } catch (error) {
-      console.log(error);
       setLoginError("Username and/or password is incorrect");
     } finally {
       setSubmitting(false);
@@ -66,9 +65,19 @@ function LoginForm() {
       className="form d-flex flex-column mx-auto"
       onSubmit={handleSubmit(onSubmit)}
     >
+      {submitting ? (
+        <ResponseMessage className="response-message response-message--informative mx-auto">
+          <Spinner className="spinner spinner--small" animation="grow" />
+          Signing in...
+        </ResponseMessage>
+      ) : null}
+
       {loginError && (
-        <FormError className="form-error mx-auto">{loginError}</FormError>
+        <ResponseMessage className="response-message response-message--form-error mx-auto">
+          {loginError}
+        </ResponseMessage>
       )}
+
       <Form.Group className="form__group" controlId="formBasicEmail">
         <Form.Label className="form__label">Email</Form.Label>
         <Form.Control
@@ -100,7 +109,7 @@ function LoginForm() {
       </Form.Group>
 
       <Button className="btn btn--submit align-self-center" type="submit">
-        {submitting ? "Logging in..." : "Sign in"}
+        Sign in
       </Button>
     </Form>
   );

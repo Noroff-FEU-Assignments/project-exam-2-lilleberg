@@ -7,6 +7,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import FormError from "../FormError/FormError";
 import { useForm } from "react-hook-form";
 import useAxios from "../../../hooks/useAxios";
+import AuthContext from "../../../context/AuthContext";
+import { useContext } from "react";
+import { BASE_URL } from "../../../constants/api";
+import axios from "axios";
 
 const estabTypes = ["BnB", "Hotel", "Guesthouse"];
 
@@ -38,34 +42,9 @@ const schema = yup.object().shape({
     .min(0, "Must be minimum 0")
     .max(5, "Max rating of 5")
     .typeError("Enter a rating, digits only"),
-  featuredImage: yup
-    .mixed()
-    .required("Add a featured image")
-    .test("Add a featured image", (file) => {
-      if (file) return true;
-      return false;
-    }),
+  featuredImage: yup.mixed().required("Add a featured image"),
+  images: yup.mixed().required("Add images"),
 });
-
-/*   
-  
-
-featuredImage: yup
-    .mixed()
-    .required("Add a featured image")
-    .test("Add a featured image", (file) => {
-      if (file) return true;
-      return false;
-    })
-    .typeError("Add a featured image"),
-  images: yup
-    .mixed()
-    .required("Add images")
-    .test("Add images", (file) => {
-      if (file) return true;
-      return false;
-    })
-    .typeError("Add images"), */
 
 function NewEstablishmentForm() {
   const [submitted, setSubmitted] = useState(false);
@@ -83,10 +62,12 @@ function NewEstablishmentForm() {
   });
 
   const http = useAxios();
-  const apiEndpoint = "establishments";
+  const apiEndpoint = "establishments?populate=*";
+  const url = BASE_URL + apiEndpoint;
+  const [auth] = useContext(AuthContext);
 
   async function onSubmit(data) {
-    console.log(data);
+    console.log("FORM DATA", data);
 
     let rooms = data.roomsAvailable;
     if (!rooms) rooms = 0;
@@ -100,31 +81,33 @@ function NewEstablishmentForm() {
       rating: data.rating,
     };
 
-    console.log(estabData);
+    const formData = new FormData();
+    formData.append("data", JSON.stringify(estabData));
+    formData.append("files.featuredImage", data.featuredImage[0]);
 
-    const image = data.featuredImage[0];
-    console.log(image, image.name);
-
-    /* const formData = new FormData();
-    formData.append("files.image", image, image.name);
-    formData.append("data", JSON.stringify(estabData)); */
+    console.log(formData.get("data"), formData.get("featuredImage"));
 
     const options = {
-      data: estabData,
+      method: "post",
+      body: formData,
+      headers: {
+        Authorization: `Bearer ${auth.jwt}`,
+        "Content-Type": "multipart/form-data",
+      },
     };
 
-    //for (const value of formData.values()) console.log(value);
-
-    /* try {
-      const response = await http.post(apiEndpoint, options);
-      console.log(response);
+    try {
+      const response = await fetch(url, options);
+      const json = await response.json();
+      console.log(json);
 
       if (response.status === 200) alert("Form submitted");
     } catch (error) {
       console.log(error);
+      setError(error.toString());
+    } finally {
+      setLoading(false);
     }
- */
-    /* Pass formType instead of type as form data */
 
     setSubmitted(true);
     //reset();

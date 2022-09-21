@@ -1,4 +1,5 @@
 import Carousel from "react-bootstrap/Carousel";
+import PropTypes from "prop-types";
 
 function ImageCarousel({ images }) {
   return (
@@ -17,5 +18,9 @@ function ImageCarousel({ images }) {
     </Carousel>
   );
 }
+
+ImageCarousel.propTypes = {
+  images: PropTypes.array.isRequired,
+};
 
 export default ImageCarousel;
