@@ -1,5 +1,4 @@
 import Form from "react-bootstrap/Form";
-import FormError from "../../forms/FormError/FormError";
 import { useState, useEffect } from "react";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -10,6 +9,8 @@ import Heading from "../../typography/Heading/Heading";
 import Button from "react-bootstrap/Button";
 import getDate from "../../../js/getDate";
 import { useParams } from "react-router-dom";
+import ResponseMessage from "../../ui/ResponseMessage/ResponseMessage";
+import Spinner from "react-bootstrap/Spinner";
 
 const schema = yup.object().shape({
   firstName: yup
@@ -43,7 +44,7 @@ const schema = yup.object().shape({
 
 function EnquiryForm() {
   const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [name, setName] = useState({});
 
@@ -77,6 +78,8 @@ function EnquiryForm() {
   });
 
   async function onSubmit(data) {
+    setLoading(true);
+
     const options = {
       data: {
         firstName: data.firstName,
@@ -94,18 +97,18 @@ function EnquiryForm() {
     try {
       const response = await axios.post(url, options);
 
-      if (response.status === 200) alert("Form submitted");
+      if (response.status === 200) {
+        setSubmitted(true);
+        reset();
+      }
       if (response.error) alert("An error occurred");
     } catch (error) {
       console.log(error.response);
       console.log(errors);
-      setError(error.toString());
+      setError("There was an error. Please try again");
     } finally {
       setLoading(false);
     }
-
-    setSubmitted(true);
-    reset();
   }
 
   return (
@@ -114,6 +117,25 @@ function EnquiryForm() {
       onSubmit={handleSubmit(onSubmit)}
     >
       <Heading content={`${name} - Booking Enquiry`} />
+
+      {submitted && (
+        <ResponseMessage className="response-message response-message--success">
+          Thank you - your enquiry has been submitted.
+        </ResponseMessage>
+      )}
+
+      {loading && (
+        <ResponseMessage className="response-message response-message--informative mx-auto">
+          <Spinner className="spinner spinner--small" animation="grow" />
+          Sending enquiry...
+        </ResponseMessage>
+      )}
+
+      {error && (
+        <ResponseMessage className="response-message response-message--error">
+          {error}
+        </ResponseMessage>
+      )}
 
       <div className="form__fullName d-flex">
         <Form.Group
@@ -129,9 +151,9 @@ function EnquiryForm() {
             {...register("firstName")}
           />
           {errors.firstName && (
-            <FormError className="input-error">
+            <ResponseMessage className="input-error">
               {errors.firstName.message}
-            </FormError>
+            </ResponseMessage>
           )}
         </Form.Group>
 
@@ -145,9 +167,9 @@ function EnquiryForm() {
             {...register("lastName")}
           />
           {errors.lastName && (
-            <FormError className="input-error">
+            <ResponseMessage className="input-error">
               {errors.lastName.message}
-            </FormError>
+            </ResponseMessage>
           )}
         </Form.Group>
       </div>
@@ -165,7 +187,9 @@ function EnquiryForm() {
           {...register("number")}
         />
         {errors.number && (
-          <FormError className="input-error">{errors.number.message}</FormError>
+          <ResponseMessage className="input-error">
+            {errors.number.message}
+          </ResponseMessage>
         )}
       </Form.Group>
 
@@ -179,7 +203,9 @@ function EnquiryForm() {
           {...register("email")}
         />
         {errors.email && (
-          <FormError className="input-error">{errors.email.message}</FormError>
+          <ResponseMessage className="input-error">
+            {errors.email.message}
+          </ResponseMessage>
         )}
       </Form.Group>
 
@@ -200,9 +226,9 @@ function EnquiryForm() {
               {...register("dateFrom")}
             />
             {errors.dateFrom && (
-              <FormError className="input-error">
+              <ResponseMessage className="input-error">
                 {errors.dateFrom.message}
-              </FormError>
+              </ResponseMessage>
             )}
           </Form.Group>
 
@@ -215,9 +241,9 @@ function EnquiryForm() {
               {...register("dateTo")}
             />
             {errors.dateTo && (
-              <FormError className="input-error">
+              <ResponseMessage className="input-error">
                 {errors.dateTo.message}
-              </FormError>
+              </ResponseMessage>
             )}
           </Form.Group>
         </div>
@@ -232,9 +258,9 @@ function EnquiryForm() {
           {...register("message")}
         />
         {errors.message && (
-          <FormError className="input-error">
+          <ResponseMessage className="input-error">
             {errors.message.message}
-          </FormError>
+          </ResponseMessage>
         )}
       </Form.Group>
 

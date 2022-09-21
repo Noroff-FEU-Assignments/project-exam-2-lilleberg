@@ -4,13 +4,13 @@ import Container from "../../layout/Container/Container";
 import { useState } from "react";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import FormError from "../FormError/FormError";
 import { useForm } from "react-hook-form";
 import useAxios from "../../../hooks/useAxios";
 import AuthContext from "../../../context/AuthContext";
 import { useContext } from "react";
 import { BASE_URL } from "../../../constants/api";
 import axios from "axios";
+import ResponseMessage from "../../ui/ResponseMessage/ResponseMessage";
 
 const estabTypes = ["BnB", "Hotel", "Guesthouse"];
 
@@ -70,7 +70,9 @@ function NewEstablishmentForm() {
     console.log("FORM DATA", data);
 
     let rooms = data.roomsAvailable;
-    if (!rooms) rooms = 0;
+    /*if (!rooms) rooms = 0; */
+
+    if (data.type === "Guesthouse") rooms = 0;
 
     const estabData = {
       name: data.name,
@@ -104,7 +106,7 @@ function NewEstablishmentForm() {
       if (response.status === 200) alert("Form submitted");
     } catch (error) {
       console.log(error);
-      setError(error.toString());
+      setError("An error occurred. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -129,7 +131,9 @@ function NewEstablishmentForm() {
             {...register("name")}
           />
           {errors.name && (
-            <FormError className="input-error">{errors.name.message}</FormError>
+            <ResponseMessage className="input-error">
+              {errors.name.message}
+            </ResponseMessage>
           )}
         </Form.Group>
 
@@ -153,9 +157,9 @@ function NewEstablishmentForm() {
           {type
             ? null
             : errors.type && (
-                <FormError className="input-error">
+                <ResponseMessage className="input-error">
                   {errors.type.message}
-                </FormError>
+                </ResponseMessage>
               )}
         </Form.Group>
 
@@ -173,9 +177,9 @@ function NewEstablishmentForm() {
             {...register("price")}
           />
           {errors.price && (
-            <FormError className="input-error">
+            <ResponseMessage className="input-error">
               {errors.price.message}
-            </FormError>
+            </ResponseMessage>
           )}
         </Form.Group>
 
@@ -190,9 +194,9 @@ function NewEstablishmentForm() {
             {...register("description")}
           />
           {errors.description && (
-            <FormError className="input-error">
+            <ResponseMessage className="input-error">
               {errors.description.message}
-            </FormError>
+            </ResponseMessage>
           )}
         </Form.Group>
 
@@ -210,9 +214,9 @@ function NewEstablishmentForm() {
               {...register("roomsAvailable")}
             />
             {errors.roomsAvailable && (
-              <FormError className="input-error">
+              <ResponseMessage className="input-error">
                 {errors.roomsAvailable.message}
-              </FormError>
+              </ResponseMessage>
             )}
           </Form.Group>
         ) : null}
@@ -232,9 +236,9 @@ function NewEstablishmentForm() {
             {...register("rating")}
           />
           {errors.rating && (
-            <FormError className="input-error">
+            <ResponseMessage className="input-error">
               {errors.rating.message}
-            </FormError>
+            </ResponseMessage>
           )}
         </Form.Group>
 
@@ -250,9 +254,9 @@ function NewEstablishmentForm() {
             {...register("featuredImage")}
           />
           {errors.featuredImage && (
-            <FormError className="input-error">
+            <ResponseMessage className="input-error">
               {errors.featuredImage.message}
-            </FormError>
+            </ResponseMessage>
           )}
         </Form.Group>
 
@@ -266,9 +270,9 @@ function NewEstablishmentForm() {
             {...register("images")}
           />
           {errors.images && (
-            <FormError className="input-error">
+            <ResponseMessage className="input-error">
               {errors.images.message}
-            </FormError>
+            </ResponseMessage>
           )}
         </Form.Group> */}
 

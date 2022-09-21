@@ -7,6 +7,8 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { BASE_URL } from "../../../constants/api";
 import axios from "axios";
+import ResponseMessage from "../../ui/ResponseMessage/ResponseMessage";
+import Spinner from "react-bootstrap/Spinner";
 
 const schema = yup.object().shape({
   firstName: yup
@@ -23,7 +25,12 @@ const schema = yup.object().shape({
     .string()
     .required("Please enter your email")
     .email("Please enter a valid email"),
-  subject: yup.string().trim().required("Please enter a subject"),
+  subject: yup
+    .string()
+    .trim()
+    .min(5, "Minimum 5 characters")
+    .max(20, "Maximum 20 characters")
+    .required("Please enter a subject"),
   message: yup
     .string()
     .trim()
@@ -33,9 +40,8 @@ const schema = yup.object().shape({
 
 function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
   const url = BASE_URL + "messages";
 
   const {
@@ -48,7 +54,7 @@ function ContactForm() {
   });
 
   async function onSubmit(data) {
-    console.log("data", data);
+    setLoading(true);
 
     const options = {
       data: data,
@@ -56,29 +62,42 @@ function ContactForm() {
 
     try {
       const response = await axios.post(url, options);
-      console.log(response);
 
-      /*CHANGE THESE*/
-      if (response.status === 200) alert("Form submitted");
-      if (response.error) alert("An error occurred");
+      if (response.status === 200) {
+        setSubmitted(true);
+        reset();
+      }
     } catch (error) {
-      console.log(error.response);
-      setError(error.toString());
+      setError("I'm sorry, there was an error. Please try again.");
     } finally {
       setLoading(false);
     }
-
-    setSubmitted(true);
-    reset();
   }
-
-  //NOT FINISHED YET - error and loading and response of form submitted
 
   return (
     <Form
       className="form d-flex flex-column mx-auto"
       onSubmit={handleSubmit(onSubmit)}
     >
+      {submitted && (
+        <ResponseMessage className="response-message response-message--success">
+          Thank you - your form has been submitted.
+        </ResponseMessage>
+      )}
+
+      {loading && (
+        <ResponseMessage className="response-message response-message--informative mx-auto">
+          <Spinner className="spinner spinner--small" animation="grow" />
+          Sending form...
+        </ResponseMessage>
+      )}
+
+      {error && (
+        <ResponseMessage className="response-message response-message--error">
+          {error}
+        </ResponseMessage>
+      )}
+
       <div className="form__fullName d-flex">
         <Form.Group
           className="form__group form__group--firstName"

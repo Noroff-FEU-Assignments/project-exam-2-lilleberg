@@ -29,15 +29,24 @@ textarea:active {
 }
 
 .response-message {
+  border: $border-thick;
+  border-radius: $border-radius;
+  border-color: $white;
+  padding: $space-sm;
+  margin-bottom: $space-md;
+  font-size: 1.2rem;
+  text-align: center;
+  max-width: 400px;
+
   &--informative {
     font-size: 1.3rem;
   }
 
-  &--form-error {
-    font-size: 1.2rem;
-    border: $border-error;
-    border-radius: $border-radius;
-    padding: $space-sm;
-    margin-bottom: $space-md;
+  &--error {
+    border-color: $error-red;
+  }
+
+  &--success {
+    border-color: $primary;
   }
 }

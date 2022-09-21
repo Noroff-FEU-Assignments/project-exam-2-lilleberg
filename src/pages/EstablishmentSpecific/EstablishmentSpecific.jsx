@@ -3,9 +3,9 @@ import { useState, useEffect } from "react";
 import { BASE_URL } from "../../constants/api";
 import Spinner from "react-bootstrap/Spinner";
 import axios from "axios";
-import FormError from "../../components/forms/FormError/FormError";
 import Container from "../../components/layout/Container/Container";
 import EstablishmentSpecificItem from "../../components/establishmentItems/EstablishmentSpecificItem/EstablishmentSpecificItem";
+import ResponseMessage from "../../components/ui/ResponseMessage/ResponseMessage";
 
 function EstablishmentSpecific() {
   const [establishment, setEstablishment] = useState(null);
@@ -26,8 +26,7 @@ function EstablishmentSpecific() {
         if (response.status === 200)
           setEstablishment(response.data.data.attributes);
       } catch (error) {
-        setError(error.toString());
-        console.log("ERROR:", error);
+        setError("Uh oh, an error occurred! Please try to refresh.");
       } finally {
         setLoading(false);
       }
@@ -38,9 +37,9 @@ function EstablishmentSpecific() {
     return <Spinner className="spinner d-flex mx-auto" animation="grow" />;
   if (error)
     return (
-      <FormError>
-        Uh oh, an error occurred: {error}. Please try to refresh!
-      </FormError>
+      <ResponseMessage className="response-message response-message--error">
+        {error}
+      </ResponseMessage>
     );
 
   const {

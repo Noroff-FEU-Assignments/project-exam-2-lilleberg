@@ -73,7 +73,7 @@ function LoginForm() {
       ) : null}
 
       {loginError && (
-        <ResponseMessage className="response-message response-message--form-error mx-auto">
+        <ResponseMessage className="response-message response-message--error mx-auto">
           {loginError}
         </ResponseMessage>
       )}

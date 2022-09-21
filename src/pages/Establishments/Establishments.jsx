@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import Spinner from "react-bootstrap/Spinner";
-import FormError from "../../components/forms/FormError/FormError";
 import { BASE_URL } from "../../constants/api";
 import axios from "axios";
 import Heading from "../../components/typography/Heading/Heading";
@@ -9,6 +8,7 @@ import Col from "react-bootstrap/Col";
 import { Link } from "react-router-dom";
 import Container from "../../components/layout/Container/Container";
 import EstablishmentItem from "../../components/establishmentItems/EstablishmentItem/EstablishmentItem";
+import ResponseMessage from "../../components/ui/ResponseMessage/ResponseMessage";
 
 function Establishments() {
   const [establishments, setEstablishments] = useState([]);
@@ -23,10 +23,8 @@ function Establishments() {
         const response = await axios.get(url);
 
         if (response.status === 200) setEstablishments(response.data.data);
-        console.log(response.data.data);
       } catch (error) {
-        console.log(error);
-        setError(error.toString());
+        setError("Uh oh, an error occurred! Please try to refresh.");
       } finally {
         setLoading(false);
       }
@@ -37,9 +35,9 @@ function Establishments() {
     return <Spinner className="spinner d-flex mx-auto" animation="grow" />;
   if (error)
     return (
-      <FormError>
-        Uh oh, an error occurred: {error}. Please try to refresh!
-      </FormError>
+      <ResponseMessage className="response-message response-message--error">
+        {error}
+      </ResponseMessage>
     );
 
   return (
