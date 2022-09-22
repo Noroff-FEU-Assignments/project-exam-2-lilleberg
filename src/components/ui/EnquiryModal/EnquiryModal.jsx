@@ -5,6 +5,13 @@ import PropTypes from "prop-types";
 function EnquiryModal({ show, handleClose }) {
   return (
     <Modal show={show} onHide={handleClose} className="modal">
+      <button
+        className="close-modal"
+        onClick={handleClose}
+        aria-label="Close booking enquiry"
+      >
+        <i className="bi bi-x-lg"></i>
+      </button>
       <EnquiryForm />
     </Modal>
   );

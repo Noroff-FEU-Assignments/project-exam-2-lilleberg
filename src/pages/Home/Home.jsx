@@ -33,7 +33,12 @@ function Home() {
 
   if (loading)
     return <Spinner className="spinner d-flex mx-auto" animation="grow" />;
-  if (error) return <ResponseMessage>{error}</ResponseMessage>;
+  if (error)
+    return (
+      <ResponseMessage className="response-message response-message--error mt-5 mx-auto">
+        {error}
+      </ResponseMessage>
+    );
 
   return (
     <>
@@ -47,6 +52,7 @@ function Home() {
           <Heading content="Welcome to Bergen" className="h1-home" />
         </div>
       </div>
+
       <Container className="home">
         <Searchbar />
 

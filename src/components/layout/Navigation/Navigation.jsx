@@ -60,7 +60,10 @@ function Navigation() {
                     New establishment
                   </NavLink>
                 </Nav.Item>
-                <button onClick={logout} className="btn nav__btn--logout">
+                <button
+                  onClick={logout}
+                  className="nav__link nav__btn--logout italic"
+                >
                   Log out
                 </button>
               </>

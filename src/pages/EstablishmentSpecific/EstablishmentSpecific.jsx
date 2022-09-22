@@ -37,7 +37,7 @@ function EstablishmentSpecific() {
     return <Spinner className="spinner d-flex mx-auto" animation="grow" />;
   if (error)
     return (
-      <ResponseMessage className="response-message response-message--error">
+      <ResponseMessage className="response-message response-message--error mt-5 mx-auto">
         {error}
       </ResponseMessage>
     );

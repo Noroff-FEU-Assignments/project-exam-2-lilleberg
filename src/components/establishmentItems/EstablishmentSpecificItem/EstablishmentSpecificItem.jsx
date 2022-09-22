@@ -1,4 +1,3 @@
-import Button from "react-bootstrap/Button";
 import Heading from "../../typography/Heading/Heading";
 import ImageCarousel from "../../ui/ImageCarousel/ImageCarousel";
 import { useState } from "react";
@@ -49,9 +48,9 @@ function EstablishmentSpecificItem({
 
         <p className="bnb__description">{description}</p>
         <div className="d-flex justify-content-end">
-          <Button className="btn estab__btn" onClick={handleShow}>
+          <button className="btn estab__btn" onClick={handleShow}>
             Make a request
-          </Button>
+          </button>
         </div>
       </div>
 

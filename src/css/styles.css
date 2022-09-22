@@ -108,7 +108,7 @@ label {
 
 p,
 a,
-.btn {
+.nav__btn--logout {
   font-weight: 300;
 }
 
@@ -145,6 +145,10 @@ h3 {
   font-weight: 500;
 }
 
+.italic {
+  font-style: italic;
+}
+
 .nav__link {
   font-size: 1.3rem;
   color: #ffffff;
@@ -176,7 +180,13 @@ h3 {
   margin-right: 10px;
 }
 .form__group--number {
-  width: 180px;
+  min-width: 180px;
+}
+.form__group--rating {
+  min-width: 140px;
+}
+.form__group select {
+  max-width: 250px;
 }
 .form__label {
   margin-bottom: 5px;
@@ -193,6 +203,20 @@ h3 {
 }
 .form__input:focus {
   border: 2px solid #006164;
+}
+.form input[type=email] {
+  max-width: 320px;
+}
+.form input[name=subject],
+.form input[type=tel] {
+  max-width: 200px;
+}
+.form input[name=price] {
+  width: 80px;
+}
+.form input[name=roomsAvailable],
+.form input[name=rating] {
+  width: 60px;
 }
 .form textarea {
   min-height: 80px;
@@ -215,12 +239,7 @@ h3 {
   max-width: 420px;
 }
 .enquiry-form h1 {
-  margin-top: 0;
-}
-
-.modal {
-  margin: 10px 0;
-  padding-bottom: 20px;
+  margin-top: 20px;
 }
 
 .table-container {
@@ -252,10 +271,35 @@ h3 {
   border-color: #006164;
 }
 
+.modal-dialog {
+  margin-top: 0;
+}
+
+.modal {
+  margin: 10px 0;
+  padding-bottom: 20px;
+}
+.modal .close-modal {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  border: none;
+  background: none;
+}
+.modal .close-modal .bi-x-lg {
+  font-size: 1.8rem;
+  color: #006164;
+}
+
 .nav {
   background-color: #006164;
   padding: 20px;
   gap: 20px;
+}
+.nav__btn--logout {
+  border: none;
+  background: none;
+  padding: 0;
 }
 
 .navbar-toggler,

@@ -2,6 +2,14 @@
   background-color: $primary;
   padding: 20px;
   gap: 20px;
+
+  &__btn {
+    &--logout {
+      border: none;
+      background: none;
+      padding: 0;
+    }
+  }
 }
 
 .navbar-toggler,

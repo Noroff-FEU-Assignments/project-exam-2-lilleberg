@@ -21,7 +21,7 @@ function ContactMessages() {
       try {
         const response = await http.get(apiEndpoint);
 
-        if (response.status === 200) setMessages(response.data.data);
+        if (response.status === 200) setMessages(response.data.data.reverse());
       } catch (error) {
         console.log(error);
         setError("Uh oh, an error occurred. Please try to refresh.");
@@ -33,7 +33,12 @@ function ContactMessages() {
 
   if (loading)
     return <Spinner className="spinner d-flex mx-auto" animation="grow" />;
-  if (error) return <ResponseMessage>{error}</ResponseMessage>;
+  if (error)
+    return (
+      <ResponseMessage className="response-message response-message--error mt-5 mx-auto">
+        {error}
+      </ResponseMessage>
+    );
 
   return (
     <Container className="container-main">

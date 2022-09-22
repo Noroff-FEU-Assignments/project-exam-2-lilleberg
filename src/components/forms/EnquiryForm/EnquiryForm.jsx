@@ -101,10 +101,7 @@ function EnquiryForm() {
         setSubmitted(true);
         reset();
       }
-      if (response.error) alert("An error occurred");
     } catch (error) {
-      console.log(error.response);
-      console.log(errors);
       setError("There was an error. Please try again");
     } finally {
       setLoading(false);

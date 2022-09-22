@@ -1,0 +1,21 @@
+.modal-dialog {
+  margin-top: 0;
+}
+
+.modal {
+  margin: $space-sm 0;
+  padding-bottom: $space-md;
+
+  .close-modal {
+    position: absolute;
+    right: $space-sm;
+    top: $space-xs;
+    border: none;
+    background: none;
+
+    .bi-x-lg {
+      font-size: 1.8rem;
+      color: $primary;
+    }
+  }
+}
