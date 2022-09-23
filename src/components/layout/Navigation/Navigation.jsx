@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
@@ -8,23 +8,39 @@ import AuthContext from "../../../context/AuthContext";
 
 function Navigation() {
   const [auth, setAuth] = useContext(AuthContext);
+  const [isActive, setIsActive] = useState(false);
   const navigate = useNavigate();
 
-  function logout() {
+  const logout = () => {
     setAuth(null);
     navigate("/");
-  }
+  };
+
+  const toggleHambIcon = () => {
+    setIsActive(!isActive);
+  };
 
   return (
     <Navbar bg="light" expand="lg">
-      <Container fluid className="container-nav">
-        <Navbar.Brand href="/" className="navbar__brand">
+      <Container fluid className="container-nav flex-lg-column">
+        <Navbar.Brand href="/" className="navbar__brand me-lg-auto">
           <img className="navbar__logo" src={logo} alt="Logo for Holidaze" />
         </Navbar.Brand>
 
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Toggle
+          aria-controls="basic-navbar-nav"
+          onClick={toggleHambIcon}
+        >
+          <div id="hamb-icon" className={isActive ? "close-nav" : ""}>
+            <span className="line1" id="line1"></span>
+            <span className="line2" id="line2"></span>
+            <span className="line3" id="line3"></span>
+            <span className="line4" id="line4"></span>
+          </div>
+        </Navbar.Toggle>
+
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="nav justify-content-end align-items-end">
+          <Nav className="nav justify-content-start align-items-center justify-content-lg-center">
             <Nav.Item className="nav__item">
               <NavLink to="/" className="nav__link">
                 Home

@@ -39,7 +39,7 @@ const schema = yup.object().shape({
     .min(0, "Must be minimum 0")
     .max(5, "Max rating of 5")
     .typeError("Enter a rating, digits only"),
-  //featuredImage: yup.mixed().required("Add a featured image"),
+  featuredImage: yup.mixed().required("Add a featured image"),
 });
 
 function NewEstablishmentForm() {
@@ -57,30 +57,26 @@ function NewEstablishmentForm() {
     resolver: yupResolver(schema),
   });
 
-  const url = BASE_URL + "establishments";
+  const url = BASE_URL + "establishments?populate=*";
   const [auth] = useContext(AuthContext);
 
   async function onSubmit(data) {
-    setLoading(true);
+    //setLoading(true);
 
-    console.log("FORM DATA", data);
-
-    let rooms = data.roomsAvailable;
-    if (data.type === "Guesthouse") rooms = 0;
+    console.log("FORMDATA", data);
 
     const estabData = {
       name: data.name,
       price: data.price,
       type: data.type,
-      roomsAvailable: rooms,
+      roomsAvailable: data.availableRooms,
       description: data.description,
       rating: data.rating,
     };
 
     const formData = new FormData();
     formData.append("data", JSON.stringify(estabData));
-    //formData.append("files.featuredImage", data.featuredImage[0]);
-
+    formData.append("files.featuredImage", data.featuredImage[0]);
     //console.log(formData.get("data"), formData.get("featuredImage"));
 
     const options = {
@@ -97,10 +93,10 @@ function NewEstablishmentForm() {
       const json = await response.json();
       console.log(json);
 
-      if (json.status === 200) {
+      /*       if (json.status === 200) {
         setSubmitted(true);
         reset();
-      }
+      } */
 
       if (json.error) console.log("BIG ERROR TIME", json.error);
     } catch (error) {
@@ -109,6 +105,9 @@ function NewEstablishmentForm() {
     } finally {
       setLoading(false);
     }
+
+    setSubmitted(true);
+    reset();
   }
 
   return (
@@ -117,25 +116,6 @@ function NewEstablishmentForm() {
         className="form new-establishment-form d-flex flex-column mx-auto"
         onSubmit={handleSubmit(onSubmit)}
       >
-        {submitted && (
-          <ResponseMessage className="response-message response-message--success">
-            A new establishment has been created
-          </ResponseMessage>
-        )}
-
-        {loading && (
-          <ResponseMessage className="response-message response-message--informative mx-auto">
-            <Spinner className="spinner spinner--small" animation="grow" />
-            Creating new establishment...
-          </ResponseMessage>
-        )}
-
-        {error && (
-          <ResponseMessage className="response-message response-message--error">
-            {error}
-          </ResponseMessage>
-        )}
-
         <Form.Group className="form__group" controlId="name">
           <Form.Label className="form__label">
             Establishment's name <span className="form__required">*</span>
@@ -256,7 +236,7 @@ function NewEstablishmentForm() {
           ) : null}
         </div>
 
-        {/*         <Form.Group controlId="featuredImage" className="form__group">
+        <Form.Group controlId="featuredImage" className="form__group">
           <Form.Label className="form__label">
             Featured image <span className="form__required">*</span>
           </Form.Label>
@@ -272,7 +252,7 @@ function NewEstablishmentForm() {
               {errors.featuredImage.message}
             </ResponseMessage>
           )}
-        </Form.Group> */}
+        </Form.Group>
 
         {/*  <Form.Group controlId="images" className="form__group">
           <Form.Label className="form__label">Images</Form.Label>

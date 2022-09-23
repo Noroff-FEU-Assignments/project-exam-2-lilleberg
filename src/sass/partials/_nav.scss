@@ -1,11 +1,11 @@
 .nav {
   background-color: $primary;
-  padding: 20px;
-  gap: 20px;
+  padding: $space-lg $space-md;
+  gap: $space-lg;
+  height: calc(100vh - 55px);
 
   &__btn {
     &--logout {
-      border: none;
       background: none;
       padding: 0;
     }
@@ -13,13 +13,69 @@
 }
 
 .navbar-toggler,
-.navbar-toggler-icon {
+.nav__btn--logout {
   border: none;
-  color: $primary;
+}
 
-  &:focus {
-    outline: none;
+.navbar-toggler {
+  background: none;
+  padding-right: $space-md;
+
+  #hamb-icon {
+    width: 33px;
+    height: 23px;
+    position: relative;
+    cursor: pointer;
+
+    span {
+      display: block;
+      position: absolute;
+      height: 3px;
+      width: 100%;
+      border-radius: 5px;
+      opacity: 1;
+      left: 0;
+      transform: rotate(0deg);
+      transition: 0.25s ease-in-out;
+      background-color: $primary;
+    }
+
+    .line-1 {
+      top: 0;
+    }
+
+    .line2,
+    .line3 {
+      top: 10px;
+      width: 25px;
+      left: 8px;
+    }
+
+    .line4 {
+      top: 20px;
+    }
   }
+
+  .close-nav #line1,
+  .close-nav #line4 {
+    width: 0%;
+    left: 50%;
+  }
+
+  .close-nav #line2,
+  .close-nav #line3 {
+    width: 100%;
+    left: 0;
+  }
+
+  .close-nav #line2 {
+    transform: rotate(45deg);
+  }
+
+  .close-nav #line3 {
+    transform: rotate(-45deg);
+  }
+  // https://codepen.io/designcouch/pen/ExvwPY
 }
 
 .navbar {
@@ -28,6 +84,7 @@
   &__logo {
     height: 40px;
     margin: 5px 10px;
+    padding-left: $space-sm;
   }
 }
 
@@ -37,4 +94,17 @@
 
 .nav__link.active {
   font-weight: 600;
+}
+
+@media only screen and (min-width: 992px) {
+  .nav {
+    height: auto;
+    gap: $space-lg;
+    padding: $space-md;
+    width: 100%;
+  }
+
+  .navbar-collapse {
+    width: 100%;
+  }
 }

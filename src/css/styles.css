@@ -255,14 +255,17 @@ h3 {
 }
 .table-container .table th,
 .table-container .table td {
-  width: 100%;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   white-space: nowrap;
   border-left: 1px solid rgb(167, 167, 167);
   border-right: 1px solid rgb(167, 167, 167);
 }
 .table-container .table th:last-child,
 .table-container .table td:last-child {
-  max-width: 250px;
+  width: 100%;
+  white-space: normal;
 }
 .table-container .table th {
   border: 1px solid #006164;
@@ -293,23 +296,69 @@ h3 {
 
 .nav {
   background-color: #006164;
-  padding: 20px;
-  gap: 20px;
+  padding: 40px 20px;
+  gap: 40px;
+  height: calc(100vh - 55px);
 }
 .nav__btn--logout {
-  border: none;
   background: none;
   padding: 0;
 }
 
 .navbar-toggler,
-.navbar-toggler-icon {
+.nav__btn--logout {
   border: none;
-  color: #006164;
 }
-.navbar-toggler:focus,
-.navbar-toggler-icon:focus {
-  outline: none;
+
+.navbar-toggler {
+  background: none;
+  padding-right: 20px;
+}
+.navbar-toggler #hamb-icon {
+  width: 33px;
+  height: 23px;
+  position: relative;
+  cursor: pointer;
+}
+.navbar-toggler #hamb-icon span {
+  display: block;
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  border-radius: 5px;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: 0.25s ease-in-out;
+  background-color: #006164;
+}
+.navbar-toggler #hamb-icon .line-1 {
+  top: 0;
+}
+.navbar-toggler #hamb-icon .line2,
+.navbar-toggler #hamb-icon .line3 {
+  top: 10px;
+  width: 25px;
+  left: 8px;
+}
+.navbar-toggler #hamb-icon .line4 {
+  top: 20px;
+}
+.navbar-toggler .close-nav #line1,
+.navbar-toggler .close-nav #line4 {
+  width: 0%;
+  left: 50%;
+}
+.navbar-toggler .close-nav #line2,
+.navbar-toggler .close-nav #line3 {
+  width: 100%;
+  left: 0;
+}
+.navbar-toggler .close-nav #line2 {
+  transform: rotate(45deg);
+}
+.navbar-toggler .close-nav #line3 {
+  transform: rotate(-45deg);
 }
 
 .navbar {
@@ -318,6 +367,7 @@ h3 {
 .navbar__logo {
   height: 40px;
   margin: 5px 10px;
+  padding-left: 10px;
 }
 
 .container-nav {
@@ -328,6 +378,17 @@ h3 {
   font-weight: 600;
 }
 
+@media only screen and (min-width: 992px) {
+  .nav {
+    height: auto;
+    gap: 40px;
+    padding: 20px;
+    width: 100%;
+  }
+  .navbar-collapse {
+    width: 100%;
+  }
+}
 .footer {
   background-color: #006164;
   margin-top: 40px;
