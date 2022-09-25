@@ -35,13 +35,13 @@ function Establishments() {
     return <Spinner className="spinner d-flex mx-auto" animation="grow" />;
   if (error)
     return (
-      <ResponseMessage className="response-message response-message--error mt-5 mx-auto">
+      <ResponseMessage className="response-message response-message--error mt-5">
         {error}
       </ResponseMessage>
     );
 
   return (
-    <Container className="container-main">
+    <Container className="container">
       <Heading content="Establishments" />
       <Row className="establishments-container justify-content-center">
         {establishments.map((establishment) => {

@@ -40,6 +40,7 @@ const schema = yup.object().shape({
     .max(5, "Max rating of 5")
     .typeError("Enter a rating, digits only"),
   featuredImage: yup.mixed().required("Add a featured image"),
+  images: yup.mixed().required("Add images"),
 });
 
 function NewEstablishmentForm() {
@@ -47,6 +48,9 @@ function NewEstablishmentForm() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [type, setType] = useState("");
+
+  const url = BASE_URL + "establishments?populate=*";
+  const [auth] = useContext(AuthContext);
 
   const {
     register,
@@ -57,19 +61,18 @@ function NewEstablishmentForm() {
     resolver: yupResolver(schema),
   });
 
-  const url = BASE_URL + "establishments?populate=*";
-  const [auth] = useContext(AuthContext);
-
   async function onSubmit(data) {
-    //setLoading(true);
-
+    setLoading(true);
     console.log("FORMDATA", data);
+
+    let rooms = data.roomsAvailable;
+    if (data.type === "Guesthouse") rooms = 0;
 
     const estabData = {
       name: data.name,
       price: data.price,
       type: data.type,
-      roomsAvailable: data.availableRooms,
+      roomsAvailable: rooms,
       description: data.description,
       rating: data.rating,
     };
@@ -77,14 +80,15 @@ function NewEstablishmentForm() {
     const formData = new FormData();
     formData.append("data", JSON.stringify(estabData));
     formData.append("files.featuredImage", data.featuredImage[0]);
-    //console.log(formData.get("data"), formData.get("featuredImage"));
+    for (let i = 0; i < data.images.length; i++) {
+      formData.append("files.images", data.images[i]);
+    }
 
     const options = {
       method: "POST",
       body: formData,
       headers: {
         Authorization: `Bearer ${auth.jwt}`,
-        "Content-Type": "multipart/form-data",
       },
     };
 
@@ -93,10 +97,10 @@ function NewEstablishmentForm() {
       const json = await response.json();
       console.log(json);
 
-      /*       if (json.status === 200) {
+      if (json.status === 200) {
         setSubmitted(true);
         reset();
-      } */
+      }
 
       if (json.error) console.log("BIG ERROR TIME", json.error);
     } catch (error) {
@@ -116,6 +120,25 @@ function NewEstablishmentForm() {
         className="form new-establishment-form d-flex flex-column mx-auto"
         onSubmit={handleSubmit(onSubmit)}
       >
+        {submitted && (
+          <ResponseMessage className="response-message response-message--success">
+            A new establishment has been created
+          </ResponseMessage>
+        )}
+
+        {loading && (
+          <ResponseMessage className="response-message response-message--informative mx-auto">
+            <Spinner className="spinner spinner--small" animation="grow" />
+            Creating new establishment...
+          </ResponseMessage>
+        )}
+
+        {error && (
+          <ResponseMessage className="response-message response-message--error">
+            {error}
+          </ResponseMessage>
+        )}
+
         <Form.Group className="form__group" controlId="name">
           <Form.Label className="form__label">
             Establishment's name <span className="form__required">*</span>
@@ -225,6 +248,7 @@ function NewEstablishmentForm() {
               <Form.Control
                 type="number"
                 className="form__input"
+                defaultValue="0"
                 {...register("roomsAvailable")}
               />
               {errors.roomsAvailable && (
@@ -246,6 +270,7 @@ function NewEstablishmentForm() {
             className="form__input"
             {...register("featuredImage")}
             required
+            accept=".jpeg,.jpg,.png"
           />
           {errors.featuredImage && (
             <ResponseMessage className="input-error">
@@ -254,21 +279,23 @@ function NewEstablishmentForm() {
           )}
         </Form.Group>
 
-        {/*  <Form.Group controlId="images" className="form__group">
+        <Form.Group controlId="images" className="form__group">
           <Form.Label className="form__label">Images</Form.Label>
           <Form.Control
             type="file"
             multiple
             required
+            accept=".jpeg,.jpg,.png"
             className="form__input"
             {...register("images")}
           />
+          <p className="form__input--images-added"></p>
           {errors.images && (
             <ResponseMessage className="input-error">
               {errors.images.message}
             </ResponseMessage>
           )}
-        </Form.Group> */}
+        </Form.Group>
 
         <Button className="btn btn--submit align-self-center" type="submit">
           Submit

@@ -3,9 +3,9 @@ import Container from "../../components/layout/Container/Container";
 import Heading from "../../components/typography/Heading/Heading";
 import useAxios from "../../hooks/useAxios";
 import Spinner from "react-bootstrap/Spinner";
-import MessageItem from "../../components/messages/MessageItem/MessageItem";
 import moment from "moment/moment";
 import ResponseMessage from "../../components/ui/ResponseMessage/ResponseMessage";
+import MessageItem from "../../components/messages/MessageItem/MessageItem";
 
 function ContactMessages() {
   const [messages, setMessages] = useState([]);
@@ -43,7 +43,7 @@ function ContactMessages() {
   return (
     <Container className="container-main">
       <Heading content="Messages" />
-      <div className="message-container">
+      <div className="message-container mx-auto">
         {messages.map((message) => {
           const item = message.attributes;
           return (
@@ -54,7 +54,7 @@ function ContactMessages() {
               email={item.email}
               subject={item.subject}
               message={item.message}
-              dateTime={moment(item.publishedAt).format("DD.MM.YYYY, H:mm")}
+              dateTime={moment(item.publishedAt).format("DD.MM.YYYY, HH:mm")}
             />
           );
         })}

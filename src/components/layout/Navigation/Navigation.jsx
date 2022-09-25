@@ -9,6 +9,7 @@ import AuthContext from "../../../context/AuthContext";
 function Navigation() {
   const [auth, setAuth] = useContext(AuthContext);
   const [isActive, setIsActive] = useState(false);
+  const [expanded, setExpanded] = useState(false);
   const navigate = useNavigate();
 
   const logout = () => {
@@ -20,18 +21,29 @@ function Navigation() {
     setIsActive(!isActive);
   };
 
+  const handleSetExpanded = () => {
+    setExpanded(expanded ? false : "expanded");
+  };
+
   return (
-    <Navbar bg="light" expand="lg">
-      <Container fluid className="container-nav flex-lg-column">
+    <Navbar bg="light" expand="lg" expanded={expanded}>
+      <Container fluid className="container-nav flex-lg-column p-0">
         <Navbar.Brand href="/" className="navbar__brand me-lg-auto">
           <img className="navbar__logo" src={logo} alt="Logo for Holidaze" />
         </Navbar.Brand>
 
         <Navbar.Toggle
           aria-controls="basic-navbar-nav"
-          onClick={toggleHambIcon}
+          onClick={() => {
+            handleSetExpanded();
+            toggleHambIcon();
+          }}
         >
-          <div id="hamb-icon" className={isActive ? "close-nav" : ""}>
+          <div
+            id="hamb-icon"
+            className={isActive ? "close-nav" : ""}
+            onClick={toggleHambIcon}
+          >
             <span className="line1" id="line1"></span>
             <span className="line2" id="line2"></span>
             <span className="line3" id="line3"></span>
@@ -40,7 +52,10 @@ function Navigation() {
         </Navbar.Toggle>
 
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="nav justify-content-start align-items-center justify-content-lg-center">
+          <Nav
+            className="nav justify-content-start align-items-center justify-content-lg-center"
+            onClick={() => setExpanded(false)}
+          >
             <Nav.Item className="nav__item">
               <NavLink to="/" className="nav__link">
                 Home

@@ -3,8 +3,6 @@
 }
 
 .hero {
-  background-color: rgb(39, 39, 39);
-  height: 250px;
   position: relative;
 
   &__img {
@@ -21,7 +19,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     color: $white;
-    background-color: rgba(0, 0, 0, 0.473);
+    background-color: rgba(0, 0, 0, 0.664);
     border: 2px solid $white;
     padding: 20px;
   }
@@ -62,6 +60,26 @@
     h3,
     p {
       color: $white;
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .hero {
+    &__img {
+      height: 300px;
+    }
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .hero {
+    &__img {
+      height: 400px;
+    }
+
+    &__text > * {
+      width: 400px;
     }
   }
 }

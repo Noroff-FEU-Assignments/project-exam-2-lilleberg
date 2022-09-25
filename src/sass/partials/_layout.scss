@@ -18,5 +18,18 @@ main {
 }
 
 .container-main {
-  margin: 0 20px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+@media only screen and (min-width: 768px) {
+  .container-main {
+    max-width: 80%;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .container-main {
+    max-width: 1000px;
+  }
 }

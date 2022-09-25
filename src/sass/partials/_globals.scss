@@ -33,7 +33,7 @@ textarea:active {
   border-radius: $border-radius;
   border-color: $white;
   padding: $space-sm;
-  margin-bottom: $space-md;
+  margin: 0 auto $space-md auto;
   font-size: 1.2rem;
   text-align: center;
   max-width: 400px;
@@ -48,5 +48,12 @@ textarea:active {
 
   &--success {
     border-color: $primary;
+  }
+}
+
+.not-found {
+  img {
+    max-width: 80%;
+    margin-top: $space-lg;
   }
 }

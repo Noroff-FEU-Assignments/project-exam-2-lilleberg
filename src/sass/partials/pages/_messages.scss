@@ -1,32 +1,28 @@
 .message {
-  &:not(:last-child) {
-    margin-bottom: $space-md;
+  border: $border-thin;
+  max-width: 450px;
+  padding: 0 0 $space-sm 0;
+
+  &:not(:last-of-type) {
+    margin-bottom: $space-lg;
   }
 
-  &__head {
-    font-weight: 500;
-    background-color: $primary !important;
-    color: $white;
+  & > div:not(:first-child) {
+    border-top: $border-thin;
+    padding: $space-sm;
   }
 
-  &__head,
-  &__data {
-    min-width: 170px;
-    border-left: 1px solid rgb(167, 167, 167);
-    border-right: 1px solid rgb(167, 167, 167);
+  &__date-time {
+    background-color: $primary;
+
+    p {
+      color: $white;
+      padding: $space-sm;
+    }
   }
 
-  th:nth-child(6),
-  td:nth-child(6) {
-    min-width: 250px;
-  }
-
-  th {
-    border: $border-thin;
-  }
-
-  tbody {
-    border-color: $primary;
+  &__title {
+    margin-bottom: $space-xs;
   }
 }
 
