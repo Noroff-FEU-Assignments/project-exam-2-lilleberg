@@ -35,7 +35,7 @@ function Enquiries() {
     return <Spinner className="spinner d-flex mx-auto" animation="grow" />;
   if (error)
     return (
-      <ResponseMessage className="response-message response-message--error mt-5 mx-auto">
+      <ResponseMessage className="response-message response-message--error mt-5">
         {error}
       </ResponseMessage>
     );
@@ -57,7 +57,7 @@ function Enquiries() {
               dateFrom={moment(item.dateFrom).format("DD.MM.YYYY")}
               dateTo={moment(item.dateTo).format("DD.MM.YYYY")}
               message={item.message}
-              dateTime={moment(item.publishedAt).format("DD.MM.YYYY, H:mm")}
+              dateTime={moment(item.publishedAt).format("DD.MM.YYYY, HH:mm")}
             />
           );
         })}

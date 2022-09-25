@@ -8,11 +8,7 @@
 
     &--firstName,
     &--dateFrom {
-      margin-right: $space-sm;
-    }
-
-    &--number {
-      min-width: 180px;
+      margin-right: $space-md;
     }
 
     &--rating {
@@ -36,7 +32,8 @@
     font-size: 1.1rem;
   }
 
-  &__input {
+  &__input,
+  .PhoneInputInput {
     border: $border-thin;
     border-radius: $border-radius;
     box-shadow: $shadow;
@@ -53,9 +50,12 @@
     max-width: 320px;
   }
 
-  input[name="subject"],
-  input[type="tel"] {
+  input[name="subject"] {
     max-width: 200px;
+  }
+
+  input[type="tel"] {
+    max-width: 160px;
   }
 
   input[name="price"] {

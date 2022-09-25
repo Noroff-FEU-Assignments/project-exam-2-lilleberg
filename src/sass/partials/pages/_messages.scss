@@ -10,6 +10,10 @@
   & > div:not(:first-child) {
     border-top: $border-thin;
     padding: $space-sm;
+
+    & p:last-of-type {
+      padding-left: $space-md;
+    }
   }
 
   &__date-time {

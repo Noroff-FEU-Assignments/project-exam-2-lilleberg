@@ -45,27 +45,34 @@ const schema = yup.object().shape({
 function EnquiryForm() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [loadName, setLoadName] = useState(false);
   const [error, setError] = useState(null);
-  const [name, setName] = useState({});
+  const [name, setName] = useState("");
 
   const { id } = useParams();
   const url = BASE_URL + "enquiries";
 
   //Get establishment's name for form
   useEffect(() => {
+    setLoadName(true);
+
     (async function () {
       try {
         const response = await axios.get(BASE_URL + "establishments/" + id);
 
         if (response.status === 200) {
-          setName(response.data.data.attributes.name);
+          setName(`${response.data.data.attributes.name} - `);
         } else {
-          setName("Unknown");
+          setName("");
         }
       } catch (error) {
-        console.log(error);
+        setError("There was an error. Please try again");
+      } finally {
+        setLoadName(false);
       }
     })();
+
+    if (loadName) setName("");
   }, []);
 
   const {
@@ -113,7 +120,7 @@ function EnquiryForm() {
       className="form enquiry-form d-flex flex-column mx-auto"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <Heading content={`${name} - Booking Enquiry`} />
+      <Heading content={`${name} Booking Enquiry`} />
 
       {submitted && (
         <ResponseMessage className="response-message response-message--success">
@@ -122,7 +129,7 @@ function EnquiryForm() {
       )}
 
       {loading && (
-        <ResponseMessage className="response-message response-message--informative mx-auto">
+        <ResponseMessage className="response-message response-message--informative">
           <Spinner className="spinner spinner--small" animation="grow" />
           Sending enquiry...
         </ResponseMessage>
@@ -181,6 +188,8 @@ function EnquiryForm() {
         <Form.Control
           className="form__input"
           type="tel"
+          minLength="5"
+          maxLength="13"
           {...register("number")}
         />
         {errors.number && (

@@ -1,4 +1,3 @@
-import Table from "react-bootstrap/Table";
 import PropTypes from "prop-types";
 
 function EnquiryItem({
@@ -13,35 +12,41 @@ function EnquiryItem({
   dateTime,
 }) {
   return (
-    <div className="enquiry table-container mx-auto">
-      <Table responsive>
-        <thead>
-          <tr>
-            <th className="table__head">Establishment</th>
-            <th className="table__head">Date/time</th>
-            <th className="table__head">First name</th>
-            <th className="table__head">Last name</th>
-            <th className="table__head">Number</th>
-            <th className="table__head">Reservation date</th>
-            <th className="table__head">Email</th>
-            <th className="table__head">Message</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td className="table__data">{establishment}</td>
-            <td className="table__data">{dateTime}</td>
-            <td className="table__data">{firstName}</td>
-            <td className="table__data">{lastName}</td>
-            <td className="table__data">{number}</td>
-            <td className="table__data">
-              {dateFrom} - {dateTo}
-            </td>
-            <td className="table__data">{email}</td>
-            <td className="table__data">{message}</td>
-          </tr>
-        </tbody>
-      </Table>
+    <div className="message enquiries mx-auto">
+      <div className="text-end message__date-time">
+        <p>{dateTime}</p>
+      </div>
+      <div>
+        <p className="semi-bold message__title">Establishment</p>
+        <p className=" message__info">{establishment}</p>
+      </div>
+      <div>
+        <p className="semi-bold message__title">Date (from - to)</p>
+        <p className=" message__info">
+          {dateFrom} - {dateTo}
+        </p>
+      </div>
+      <div>
+        <p className="semi-bold message__title">First name</p>
+        <p className=" message__info">{firstName}</p>
+      </div>
+      <div>
+        <p className="semi-bold message__title">Last name</p>
+        <p>{lastName}</p>
+      </div>
+      <div>
+        <p className="semi-bold message__title">Number</p>
+        <p className=" message__info">{number}</p>
+      </div>
+
+      <div>
+        <p className="semi-bold message__title">Email</p>
+        <p>{email}</p>
+      </div>
+      <div>
+        <p className="semi-bold message__title">Message</p>
+        <p>{message}</p>
+      </div>
     </div>
   );
 }
