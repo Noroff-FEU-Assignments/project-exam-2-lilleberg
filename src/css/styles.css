@@ -133,7 +133,8 @@ a,
 
 p,
 .form__input,
-.form__label {
+.form__label,
+.btn {
   font-size: 1.1rem;
 }
 
@@ -259,35 +260,6 @@ h3 {
 }
 .enquiry-form h1 {
   margin-top: 20px;
-}
-
-.table-container:not(:last-child) {
-  margin-bottom: 20px;
-}
-.table-container .table.table-top {
-  margin-bottom: 0;
-}
-.table-container .table__head {
-  font-weight: 500;
-  background-color: #006164 !important;
-  color: #ffffff;
-}
-.table-container .table th {
-  border: 1px solid #006164;
-}
-.table-container .table tbody {
-  border-color: #006164;
-}
-.table-container .table th,
-.table-container .table td {
-  width: 100%;
-  white-space: nowrap;
-  border-left: 1px solid rgb(167, 167, 167);
-  border-right: 1px solid rgb(167, 167, 167);
-}
-.table-container .table__data--message {
-  width: 100%;
-  white-space: wrap;
 }
 
 .modal-dialog {

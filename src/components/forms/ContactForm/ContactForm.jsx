@@ -8,6 +8,7 @@ import { BASE_URL } from "../../../constants/api";
 import axios from "axios";
 import ResponseMessage from "../../ui/ResponseMessage/ResponseMessage";
 import Spinner from "react-bootstrap/Spinner";
+import scrollToTop from "../../../js/scrollToTop";
 
 const schema = yup.object().shape({
   firstName: yup
@@ -53,6 +54,7 @@ function ContactForm() {
   });
 
   async function onSubmit(data) {
+    scrollToTop(window);
     setLoading(true);
 
     const options = {
@@ -61,16 +63,14 @@ function ContactForm() {
 
     try {
       const response = await axios.post(url, options);
-
-      if (response.status === 200) {
-        setSubmitted(true);
-        reset();
-      }
     } catch (error) {
       setError("I'm sorry, there was an error. Please try again.");
     } finally {
       setLoading(false);
     }
+
+    setSubmitted(true);
+    reset();
   }
 
   return (

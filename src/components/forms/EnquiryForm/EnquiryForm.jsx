@@ -11,6 +11,7 @@ import getDate from "../../../js/getDate";
 import { useParams } from "react-router-dom";
 import ResponseMessage from "../../ui/ResponseMessage/ResponseMessage";
 import Spinner from "react-bootstrap/Spinner";
+import scrollToTop from "../../../js/scrollToTop";
 
 const schema = yup.object().shape({
   firstName: yup
@@ -61,7 +62,7 @@ function EnquiryForm() {
         const response = await axios.get(BASE_URL + "establishments/" + id);
 
         if (response.status === 200) {
-          setName(`${response.data.data.attributes.name} - `);
+          setName(`${response.data.data.attributes.name}`);
         } else {
           setName("");
         }
@@ -85,6 +86,7 @@ function EnquiryForm() {
   });
 
   async function onSubmit(data) {
+    scrollToTop(document.querySelector(".modal"));
     setLoading(true);
 
     const options = {
@@ -103,16 +105,13 @@ function EnquiryForm() {
 
     try {
       const response = await axios.post(url, options);
-
-      if (response.status === 200) {
-        setSubmitted(true);
-        reset();
-      }
     } catch (error) {
       setError("There was an error. Please try again");
     } finally {
       setLoading(false);
     }
+    setSubmitted(true);
+    reset();
   }
 
   return (
@@ -120,7 +119,7 @@ function EnquiryForm() {
       className="form enquiry-form d-flex flex-column mx-auto"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <Heading content={`${name} Booking Enquiry`} />
+      <Heading content={`${name} - Booking Enquiry`} />
 
       {submitted && (
         <ResponseMessage className="response-message response-message--success">

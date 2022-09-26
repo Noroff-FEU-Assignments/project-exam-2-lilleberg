@@ -10,6 +10,7 @@ import { useContext } from "react";
 import { BASE_URL } from "../../../constants/api";
 import ResponseMessage from "../../ui/ResponseMessage/ResponseMessage";
 import { Spinner } from "react-bootstrap";
+import scrollToTop from "../../../js/scrollToTop";
 
 const estabTypes = ["BnB", "Hotel", "Guesthouse"];
 
@@ -63,7 +64,7 @@ function NewEstablishmentForm() {
 
   async function onSubmit(data) {
     setLoading(true);
-    console.log("FORMDATA", data);
+    scrollToTop(window);
 
     let rooms = data.roomsAvailable;
     if (data.type === "Guesthouse") rooms = 0;
@@ -95,12 +96,6 @@ function NewEstablishmentForm() {
     try {
       const response = await fetch(url, options);
       const json = await response.json();
-      console.log(json);
-
-      if (json.status === 200) {
-        setSubmitted(true);
-        reset();
-      }
 
       if (json.error) console.log("BIG ERROR TIME", json.error);
     } catch (error) {
