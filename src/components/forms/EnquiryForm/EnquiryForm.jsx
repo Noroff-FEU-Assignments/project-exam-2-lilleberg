@@ -230,6 +230,7 @@ function EnquiryForm() {
               className="form__input"
               type="date"
               placeholder="dd.mm.yyyy"
+              defaultValue={getDate()}
               min={getDate()}
               {...register("dateFrom")}
             />
@@ -246,6 +247,7 @@ function EnquiryForm() {
               className="form__input"
               type="date"
               placeholder="dd.mm.yyyy"
+              defaultValue={getDate(1)}
               min={getDate(1)}
               {...register("dateTo")}
             />
