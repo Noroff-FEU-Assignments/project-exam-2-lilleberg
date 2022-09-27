@@ -12,7 +12,7 @@ function EstablishmentItem({
   type,
 }) {
   return (
-    <Card>
+    <Card className="border-0">
       <Card.Img
         variant="top"
         src={image}

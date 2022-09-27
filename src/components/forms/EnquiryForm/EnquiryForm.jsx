@@ -39,6 +39,7 @@ const schema = yup.object().shape({
   dateTo: yup
     .date()
     .required("Please select a date")
+    .min(yup.ref("dateFrom"), "Must be after date from")
     .typeError("Please select a date"),
   message: yup.string().trim(),
 });
@@ -67,7 +68,7 @@ function EnquiryForm() {
           setName("");
         }
       } catch (error) {
-        setError("There was an error. Please try again");
+        setError("There was an error. Please try again.");
       } finally {
         setLoadName(false);
       }
@@ -110,6 +111,7 @@ function EnquiryForm() {
     } finally {
       setLoading(false);
     }
+
     setSubmitted(true);
     reset();
   }

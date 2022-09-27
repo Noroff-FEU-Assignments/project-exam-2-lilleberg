@@ -196,7 +196,8 @@ h3 {
   margin-right: 20px;
 }
 .form__group--rating {
-  min-width: 140px;
+  max-width: 250px;
+  margin-right: 10px;
 }
 .form__group select {
   max-width: 250px;
@@ -210,16 +211,14 @@ h3 {
 .form__date-label {
   font-size: 1.1rem;
 }
-.form__input,
-.form .PhoneInputInput {
+.form__input {
   border: 1px solid #006164;
   border-radius: 3px;
   box-shadow: 3px 3px 5px #9f9f9f;
   padding-left: 5px;
   height: 2.5rem;
 }
-.form__input:focus,
-.form .PhoneInputInput:focus {
+.form__input:focus {
   border: 2px solid #006164;
 }
 .form input[type=email] {
@@ -274,7 +273,6 @@ h3 {
   position: absolute;
   right: 10px;
   top: 5px;
-  border: none;
   background: none;
 }
 .modal .close-modal .bi-x-lg {
@@ -291,11 +289,6 @@ h3 {
 .nav__btn--logout {
   background: none;
   padding: 0;
-}
-
-.navbar-toggler,
-.nav__btn--logout {
-  border: none;
 }
 
 .navbar-toggler {
@@ -331,22 +324,6 @@ h3 {
 }
 .navbar-toggler #hamb-icon .line4 {
   top: 20px;
-}
-.navbar-toggler .close-nav #line1,
-.navbar-toggler .close-nav #line4 {
-  width: 0%;
-  left: 50%;
-}
-.navbar-toggler .close-nav #line2,
-.navbar-toggler .close-nav #line3 {
-  width: 100%;
-  left: 0;
-}
-.navbar-toggler .close-nav #line2 {
-  transform: rotate(45deg);
-}
-.navbar-toggler .close-nav #line3 {
-  transform: rotate(-45deg);
 }
 
 .navbar {
@@ -508,6 +485,7 @@ h3 {
   height: 250px;
   -o-object-fit: cover;
      object-fit: cover;
+  border-radius: 3px;
 }
 .establishment__rating {
   gap: 5px;

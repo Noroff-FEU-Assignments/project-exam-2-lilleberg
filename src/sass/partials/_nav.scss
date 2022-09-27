@@ -12,11 +12,6 @@
   }
 }
 
-.navbar-toggler,
-.nav__btn--logout {
-  border: none;
-}
-
 .navbar-toggler {
   background: none;
   padding-right: $space-md;
@@ -54,26 +49,6 @@
     .line4 {
       top: 20px;
     }
-  }
-
-  .close-nav #line1,
-  .close-nav #line4 {
-    width: 0%;
-    left: 50%;
-  }
-
-  .close-nav #line2,
-  .close-nav #line3 {
-    width: 100%;
-    left: 0;
-  }
-
-  .close-nav #line2 {
-    transform: rotate(45deg);
-  }
-
-  .close-nav #line3 {
-    transform: rotate(-45deg);
   }
 }
 

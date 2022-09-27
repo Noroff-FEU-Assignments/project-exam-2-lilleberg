@@ -12,7 +12,8 @@
     }
 
     &--rating {
-      min-width: 140px;
+      max-width: 250px;
+      margin-right: $space-sm;
     }
 
     select {
@@ -32,8 +33,7 @@
     font-size: 1.1rem;
   }
 
-  &__input,
-  .PhoneInputInput {
+  &__input {
     border: $border-thin;
     border-radius: $border-radius;
     box-shadow: $shadow;

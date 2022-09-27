@@ -38,12 +38,17 @@ function EstablishmentSpecificItem({
         <div className="estab__type-rooms">
           <p className="estab__type semi-bold">{type}</p>
 
-          {roomsAvailable ? (
+          {type !== "Guesthouse" ? (
             <p>
               <span className="semi-bold">Rooms available:</span>{" "}
               {roomsAvailable}
             </p>
-          ) : null}
+          ) : (
+            <p>
+              <span className="semi-bold">Number of bedrooms:</span>{" "}
+              {roomsAvailable}
+            </p>
+          )}
         </div>
 
         <p className="bnb__description">{description}</p>

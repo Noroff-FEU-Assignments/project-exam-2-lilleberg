@@ -33,7 +33,7 @@ const schema = yup.object().shape({
     .required("Enter the price")
     .typeError("Enter the price, digits only"),
   description: yup.string().trim().required("Enter a description"),
-  roomsAvailable: yup.number().typeError("Enter rooms available, digits only"),
+  roomsAvailable: yup.number().typeError("Enter rooms, digits only"),
   rating: yup
     .number()
     .required("Enter a rating")
@@ -67,7 +67,9 @@ function NewEstablishmentForm() {
     scrollToTop(window);
 
     let rooms = data.roomsAvailable;
-    if (data.type === "Guesthouse") rooms = 0;
+    if (data.type === "Guesthouse" || !rooms) {
+      rooms = 0;
+    }
 
     const estabData = {
       name: data.name,
@@ -96,10 +98,8 @@ function NewEstablishmentForm() {
     try {
       const response = await fetch(url, options);
       const json = await response.json();
-
-      if (json.error) console.log("BIG ERROR TIME", json.error);
+      console.log(json);
     } catch (error) {
-      console.log(error);
       setError("An error occurred. Please try again.");
     } finally {
       setLoading(false);
@@ -210,7 +210,7 @@ function NewEstablishmentForm() {
           )}
         </Form.Group>
 
-        <div className="d-flex">
+        <div className="d-flex justify-content-between w-100">
           <Form.Group
             className="form__group form__group--rating"
             controlId="rating"
@@ -243,7 +243,6 @@ function NewEstablishmentForm() {
               <Form.Control
                 type="number"
                 className="form__input"
-                defaultValue="0"
                 {...register("roomsAvailable")}
               />
               {errors.roomsAvailable && (
@@ -252,7 +251,26 @@ function NewEstablishmentForm() {
                 </ResponseMessage>
               )}
             </Form.Group>
-          ) : null}
+          ) : (
+            <Form.Group
+              className="form__group form__group--rooms"
+              controlId="roomsAvailable"
+            >
+              <Form.Label className="form__label">
+                Number of bedrooms <span className="form__required">*</span>
+              </Form.Label>
+              <Form.Control
+                type="number"
+                className="form__input"
+                {...register("roomsAvailable")}
+              />
+              {errors.roomsAvailable && (
+                <ResponseMessage className="input-error">
+                  {errors.roomsAvailable.message}
+                </ResponseMessage>
+              )}
+            </Form.Group>
+          )}
         </div>
 
         <Form.Group controlId="featuredImage" className="form__group">

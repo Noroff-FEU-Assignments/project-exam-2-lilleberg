@@ -8,7 +8,6 @@ import AuthContext from "../../../context/AuthContext";
 
 function Navigation() {
   const [auth, setAuth] = useContext(AuthContext);
-  const [isActive, setIsActive] = useState(false);
   const [expanded, setExpanded] = useState(false);
   const navigate = useNavigate();
 
@@ -17,12 +16,8 @@ function Navigation() {
     navigate("/");
   };
 
-  const toggleHambIcon = () => {
-    setIsActive(!isActive);
-  };
-
   const handleSetExpanded = () => {
-    setExpanded(expanded ? false : "expanded");
+    setExpanded(expanded ? false : true);
   };
 
   return (
@@ -33,17 +28,13 @@ function Navigation() {
         </Navbar.Brand>
 
         <Navbar.Toggle
+          className="border-0"
           aria-controls="basic-navbar-nav"
           onClick={() => {
             handleSetExpanded();
-            toggleHambIcon();
           }}
         >
-          <div
-            id="hamb-icon"
-            className={isActive ? "close-nav" : ""}
-            onClick={toggleHambIcon}
-          >
+          <div id="hamb-icon">
             <span className="line1" id="line1"></span>
             <span className="line2" id="line2"></span>
             <span className="line3" id="line3"></span>
@@ -93,7 +84,7 @@ function Navigation() {
                 </Nav.Item>
                 <button
                   onClick={logout}
-                  className="nav__link nav__btn--logout italic"
+                  className="nav__link nav__btn--logout italic border-0"
                 >
                   Log out
                 </button>

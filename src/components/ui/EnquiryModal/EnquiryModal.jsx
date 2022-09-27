@@ -6,7 +6,7 @@ function EnquiryModal({ show, handleClose }) {
   return (
     <Modal show={show} onHide={handleClose} className="modal">
       <button
-        className="close-modal"
+        className="close-modal border-0"
         onClick={handleClose}
         aria-label="Close booking enquiry"
       >
