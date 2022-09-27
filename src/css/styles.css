@@ -362,7 +362,7 @@ h3 {
   padding: 20px;
   display: flex;
   place-content: center;
-  gap: 20px;
+  gap: 10px;
 }
 .footer__item {
   color: #ffffff;

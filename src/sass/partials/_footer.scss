@@ -1,11 +1,11 @@
 .footer {
   background-color: $primary;
-  margin-top: 40px;
-  padding: 20px;
+  margin-top: $space-lg;
+  padding: $space-md;
 
   display: flex;
   place-content: center;
-  gap: 20px;
+  gap: $space-sm;
 
   &__item {
     color: $white;
