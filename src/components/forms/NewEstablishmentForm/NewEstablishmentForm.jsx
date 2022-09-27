@@ -66,16 +66,11 @@ function NewEstablishmentForm() {
     setLoading(true);
     scrollToTop(window);
 
-    let rooms = data.roomsAvailable;
-    if (data.type === "Guesthouse" || !rooms) {
-      rooms = 0;
-    }
-
     const estabData = {
       name: data.name,
       price: data.price,
       type: data.type,
-      roomsAvailable: rooms,
+      roomsAvailable: data.roomsAvailable,
       description: data.description,
       rating: data.rating,
     };
@@ -98,7 +93,6 @@ function NewEstablishmentForm() {
     try {
       const response = await fetch(url, options);
       const json = await response.json();
-      console.log(json);
     } catch (error) {
       setError("An error occurred. Please try again.");
     } finally {
