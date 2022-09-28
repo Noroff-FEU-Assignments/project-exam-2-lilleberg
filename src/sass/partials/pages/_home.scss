@@ -26,7 +26,6 @@
 }
 
 .searchbar {
-  width: 220px;
   margin: 40px auto;
 
   input {
@@ -38,6 +37,11 @@
       border: $border-thick;
     }
   }
+}
+
+.searchbar,
+.dropdown-menu {
+  max-width: 250px;
 }
 
 .form-control:not(input, select, textarea) {
@@ -61,6 +65,11 @@
     p {
       color: $white;
     }
+  }
+
+  &__stay,
+  &__member p {
+    max-width: 800px;
   }
 }
 

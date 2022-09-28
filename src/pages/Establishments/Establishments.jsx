@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import Container from "../../components/layout/Container/Container";
 import EstablishmentItem from "../../components/establishmentItems/EstablishmentItem/EstablishmentItem";
 import ResponseMessage from "../../components/ui/ResponseMessage/ResponseMessage";
+import PageTitle from "../../components/other/PageTitle/PageTitle";
 
 function Establishments() {
   const [establishments, setEstablishments] = useState([]);
@@ -41,30 +42,41 @@ function Establishments() {
     );
 
   return (
-    <Container className="container">
-      <Heading content="Establishments" />
-      <Row className="establishments-container justify-content-center">
-        {establishments.map((establishment) => {
-          const item = establishment.attributes;
-          const image = item.featuredImage.data.attributes;
-          return (
-            <Col key={establishment.id} md={6} xl={4} className="establishment">
-              <Link to={`/establishment/${establishment.id}`}>
-                <EstablishmentItem
-                  image={item.featuredImage.data.attributes.url}
-                  altText={image.attributes ? image.attributes : image.name}
-                  name={item.name}
-                  rating={item.rating}
-                  price={item.price}
-                  description={item.description}
-                  type={item.type}
-                />
-              </Link>
-            </Col>
-          );
-        })}
-      </Row>
-    </Container>
+    <>
+      <PageTitle
+        title="Establishments"
+        description="View all our great establishments and book the right one for you. And enjoy Bergen!"
+      />
+      <Container className="container">
+        <Heading content="Establishments" />
+        <Row className="establishments-container justify-content-center">
+          {establishments.map((establishment) => {
+            const item = establishment.attributes;
+            const image = item.featuredImage.data.attributes;
+            return (
+              <Col
+                key={establishment.id}
+                md={6}
+                xl={4}
+                className="establishment"
+              >
+                <Link to={`/establishment/${establishment.id}`}>
+                  <EstablishmentItem
+                    image={item.featuredImage.data.attributes.url}
+                    altText={image.attributes ? image.attributes : image.name}
+                    name={item.name}
+                    rating={item.rating}
+                    price={item.price}
+                    description={item.description}
+                    type={item.type}
+                  />
+                </Link>
+              </Col>
+            );
+          })}
+        </Row>
+      </Container>
+    </>
   );
 }
 

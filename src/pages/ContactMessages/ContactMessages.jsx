@@ -6,6 +6,7 @@ import Spinner from "react-bootstrap/Spinner";
 import moment from "moment/moment";
 import ResponseMessage from "../../components/ui/ResponseMessage/ResponseMessage";
 import MessageItem from "../../components/messages/MessageItem/MessageItem";
+import PageTitle from "../../components/other/PageTitle/PageTitle";
 
 function ContactMessages() {
   const [messages, setMessages] = useState([]);
@@ -41,25 +42,31 @@ function ContactMessages() {
     );
 
   return (
-    <Container className="container-main">
-      <Heading content="Messages" />
-      <div className="message-container mx-auto">
-        {messages.map((message) => {
-          const item = message.attributes;
-          return (
-            <MessageItem
-              key={message.id}
-              firstName={item.firstName}
-              lastName={item.lastName}
-              email={item.email}
-              subject={item.subject}
-              message={item.message}
-              dateTime={moment(item.publishedAt).format("DD.MM.YYYY, HH:mm")}
-            />
-          );
-        })}
-      </div>
-    </Container>
+    <>
+      <PageTitle
+        title="Messages"
+        description="Admin | View Holidaze's messages here."
+      />
+      <Container className="container-main">
+        <Heading content="Messages" />
+        <div className="message-container mx-auto">
+          {messages.map((message) => {
+            const item = message.attributes;
+            return (
+              <MessageItem
+                key={message.id}
+                firstName={item.firstName}
+                lastName={item.lastName}
+                email={item.email}
+                subject={item.subject}
+                message={item.message}
+                dateTime={moment(item.publishedAt).format("DD.MM.YYYY, HH:mm")}
+              />
+            );
+          })}
+        </div>
+      </Container>
+    </>
   );
 }
 

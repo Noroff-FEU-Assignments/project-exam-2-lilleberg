@@ -6,6 +6,7 @@ import { Spinner } from "react-bootstrap";
 import moment from "moment/moment";
 import EnquiryItem from "../../components/messages/EnquiryItem/EnquiryItem";
 import ResponseMessage from "../../components/ui/ResponseMessage/ResponseMessage";
+import PageTitle from "../../components/other/PageTitle/PageTitle";
 
 function Enquiries() {
   const [enquiries, setEnquiries] = useState([]);
@@ -41,28 +42,34 @@ function Enquiries() {
     );
 
   return (
-    <Container className="container-main">
-      <Heading content="Enquiries" />
-      <div className="enquiries-container">
-        {enquiries.map((enquiry, i) => {
-          const item = enquiry.attributes;
-          return (
-            <EnquiryItem
-              key={i.toString()}
-              establishment={item.establishment}
-              firstName={item.firstName}
-              lastName={item.lastName}
-              number={item.number}
-              email={item.email}
-              dateFrom={moment(item.dateFrom).format("DD.MM.YYYY")}
-              dateTo={moment(item.dateTo).format("DD.MM.YYYY")}
-              message={item.message}
-              dateTime={moment(item.publishedAt).format("DD.MM.YYYY, HH:mm")}
-            />
-          );
-        })}
-      </div>
-    </Container>
+    <>
+      <PageTitle
+        title="Enquiries"
+        description="Admin | View booking enquiries here."
+      />
+      <Container className="container-main">
+        <Heading content="Enquiries" />
+        <div className="enquiries-container">
+          {enquiries.map((enquiry, i) => {
+            const item = enquiry.attributes;
+            return (
+              <EnquiryItem
+                key={i.toString()}
+                establishment={item.establishment}
+                firstName={item.firstName}
+                lastName={item.lastName}
+                number={item.number}
+                email={item.email}
+                dateFrom={moment(item.dateFrom).format("DD.MM.YYYY")}
+                dateTo={moment(item.dateTo).format("DD.MM.YYYY")}
+                message={item.message}
+                dateTime={moment(item.publishedAt).format("DD.MM.YYYY, HH:mm")}
+              />
+            );
+          })}
+        </div>
+      </Container>
+    </>
   );
 }
 

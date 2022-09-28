@@ -79,7 +79,7 @@ function Navigation() {
                 </Nav.Item>
                 <Nav.Item className="nav__item">
                   <NavLink to="/admin/new-establishment" className="nav__link">
-                    New establishment
+                    Add establishment
                   </NavLink>
                 </Nav.Item>
                 <button

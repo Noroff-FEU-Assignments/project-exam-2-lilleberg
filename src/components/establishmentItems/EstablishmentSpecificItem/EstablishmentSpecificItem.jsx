@@ -5,7 +5,6 @@ import EnquiryModal from "../../ui/EnquiryModal/EnquiryModal";
 import PropTypes from "prop-types";
 
 function EstablishmentSpecificItem({
-  name,
   images,
   description,
   price,
@@ -21,7 +20,6 @@ function EstablishmentSpecificItem({
   return (
     <>
       <div className="mx-auto estab">
-        <Heading content={name} />
         <ImageCarousel images={images} />
 
         <div className="d-flex justify-content-between estab__price-rating">
@@ -65,7 +63,6 @@ function EstablishmentSpecificItem({
 }
 
 EstablishmentSpecificItem.propTypes = {
-  name: PropTypes.string.isRequired,
   images: PropTypes.array.isRequired,
   description: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,

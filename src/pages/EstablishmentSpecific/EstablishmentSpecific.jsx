@@ -6,6 +6,8 @@ import axios from "axios";
 import Container from "../../components/layout/Container/Container";
 import EstablishmentSpecificItem from "../../components/establishmentItems/EstablishmentSpecificItem/EstablishmentSpecificItem";
 import ResponseMessage from "../../components/ui/ResponseMessage/ResponseMessage";
+import Heading from "../../components/typography/Heading/Heading";
+import PageTitle from "../../components/other/PageTitle/PageTitle";
 
 function EstablishmentSpecific() {
   const [establishment, setEstablishment] = useState(null);
@@ -54,20 +56,29 @@ function EstablishmentSpecific() {
     type,
   } = establishment;
 
+  let length = 150;
+  const trimmedDesc =
+    description.length >= length
+      ? description.substring(0, length - 3) + "..."
+      : description;
+
   return (
-    <Container className="container-main">
-      <EstablishmentSpecificItem
-        name={name}
-        images={images.data}
-        description={description}
-        price={price}
-        dateFrom={dateFrom}
-        dateTo={dateTo}
-        rating={rating}
-        roomsAvailable={roomsAvailable}
-        type={type}
-      />
-    </Container>
+    <>
+      <PageTitle title={name} description={trimmedDesc} />
+      <Container className="container-main">
+        <Heading content={name} />
+        <EstablishmentSpecificItem
+          images={images.data}
+          description={description}
+          price={price}
+          dateFrom={dateFrom}
+          dateTo={dateTo}
+          rating={rating}
+          roomsAvailable={roomsAvailable}
+          type={type}
+        />
+      </Container>
+    </>
   );
 }
 

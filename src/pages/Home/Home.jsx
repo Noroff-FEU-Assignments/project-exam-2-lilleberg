@@ -7,6 +7,7 @@ import { BASE_URL } from "../../constants/api";
 import axios from "axios";
 import Spinner from "react-bootstrap/Spinner";
 import ResponseMessage from "../../components/ui/ResponseMessage/ResponseMessage";
+import PageTitle from "../../components/other/PageTitle/PageTitle";
 
 function Home() {
   const [image, setImage] = useState([]);
@@ -42,6 +43,10 @@ function Home() {
 
   return (
     <>
+      <PageTitle
+        title="Home"
+        description="Visiting Bergen? Book your stay here at Holidaze. We have a great assortment of BnB's, hotels and guesthouses!"
+      />
       <div className="hero">
         <img
           src={image.url}
@@ -56,11 +61,12 @@ function Home() {
       <Container className="home">
         <Searchbar />
 
-        <section className="home__stay d-flex flex-column align-items-center">
-          <Heading size="2" content="Where to stay?" />
+        <section className="home__stay d-flex flex-column align-items-center mx-auto">
+          <Heading size="2" content="Visiting Bergen?" />
           <p>
-            Holidaze has a great assortment of hotels, B&amp;B's and
-            guesthouses. What do you prefer?
+            If you're visiting Bergen, Holidaze has a great assortment of
+            hotels, B&amp;B's and guesthouses. Book your stay here and enjoy
+            beautiful Bergen with its great ocean view.
           </p>
           <NavLink to="/establishments" className="btn">
             Book now
