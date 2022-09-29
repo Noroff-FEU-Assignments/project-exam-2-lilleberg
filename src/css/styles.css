@@ -395,7 +395,7 @@ h3 {
 }
 
 .searchbar {
-  margin: 40px auto;
+  margin: 40px auto 0 auto;
 }
 .searchbar input {
   border: 1px solid #006164;

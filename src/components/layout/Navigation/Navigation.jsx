@@ -5,6 +5,7 @@ import Nav from "react-bootstrap/Nav";
 import logo from "../../../logo.png";
 import Container from "react-bootstrap/Container";
 import AuthContext from "../../../context/AuthContext";
+import Searchbar from "../../ui/Searchbar/Searchbar";
 
 function Navigation() {
   const [auth, setAuth] = useContext(AuthContext);
@@ -26,7 +27,6 @@ function Navigation() {
         <Navbar.Brand href="/" className="navbar__brand me-lg-auto">
           <img className="navbar__logo" src={logo} alt="Logo for Holidaze" />
         </Navbar.Brand>
-
         <Navbar.Toggle
           className="border-0"
           aria-controls="basic-navbar-nav"
