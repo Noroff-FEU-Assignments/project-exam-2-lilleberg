@@ -12,7 +12,7 @@
     }
 
     &--rating {
-      max-width: 250px;
+      max-width: 120px;
       margin-right: $space-sm;
     }
 
@@ -71,7 +71,7 @@
     min-height: 80px;
   }
 
-  .input-error {
+  .input-error p {
     margin-top: $space-xs;
     font-size: 0.9rem;
     color: $error-red;

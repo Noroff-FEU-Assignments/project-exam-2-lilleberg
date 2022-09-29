@@ -64,12 +64,12 @@ function LoginForm() {
       className="form d-flex flex-column mx-auto"
       onSubmit={handleSubmit(onSubmit)}
     >
-      {submitting ? (
+      {submitting && (
         <ResponseMessage className="response-message response-message--informative mx-auto">
           <Spinner className="spinner spinner--small" animation="grow" />
           Signing in...
         </ResponseMessage>
-      ) : null}
+      )}
 
       {loginError && (
         <ResponseMessage className="response-message response-message--error mx-auto">

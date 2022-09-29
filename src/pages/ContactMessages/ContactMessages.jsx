@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Container from "../../components/layout/Container/Container";
 import Heading from "../../components/typography/Heading/Heading";
 import useAxios from "../../hooks/useAxios";
@@ -7,11 +7,21 @@ import moment from "moment/moment";
 import ResponseMessage from "../../components/ui/ResponseMessage/ResponseMessage";
 import MessageItem from "../../components/messages/MessageItem/MessageItem";
 import PageTitle from "../../components/other/PageTitle/PageTitle";
+import AuthContext from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 function ContactMessages() {
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const [auth] = useContext(AuthContext);
+  const [expanded, setExpanded] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!auth) navigate("/");
+  }, []);
 
   //authenticated request
   const http = useAxios();
@@ -36,7 +46,7 @@ function ContactMessages() {
     return <Spinner className="spinner d-flex mx-auto" animation="grow" />;
   if (error)
     return (
-      <ResponseMessage className="response-message response-message--error mt-5 mx-auto">
+      <ResponseMessage className="response-message response-message--error mx-auto">
         {error}
       </ResponseMessage>
     );

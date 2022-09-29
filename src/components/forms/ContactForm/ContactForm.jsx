@@ -63,14 +63,16 @@ function ContactForm() {
 
     try {
       const response = await axios.post(url, options);
+
+      if (response.status === 200) {
+        setSubmitted(true);
+        reset();
+      }
     } catch (error) {
       setError("I'm sorry, there was an error. Please try again.");
     } finally {
       setLoading(false);
     }
-
-    setSubmitted(true);
-    reset();
   }
 
   return (
@@ -79,7 +81,7 @@ function ContactForm() {
       onSubmit={handleSubmit(onSubmit)}
     >
       {submitted && (
-        <ResponseMessage className="response-message response-message--success">
+        <ResponseMessage className="response-message response-message--success mx-auto">
           Thank you - your form has been submitted.
         </ResponseMessage>
       )}
@@ -92,7 +94,7 @@ function ContactForm() {
       )}
 
       {error && (
-        <ResponseMessage className="response-message response-message--error">
+        <ResponseMessage className="response-message response-message--error mx-auto">
           {error}
         </ResponseMessage>
       )}

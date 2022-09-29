@@ -5,7 +5,6 @@ import Nav from "react-bootstrap/Nav";
 import logo from "../../../logo.png";
 import Container from "react-bootstrap/Container";
 import AuthContext from "../../../context/AuthContext";
-import Searchbar from "../../ui/Searchbar/Searchbar";
 
 function Navigation() {
   const [auth, setAuth] = useContext(AuthContext);

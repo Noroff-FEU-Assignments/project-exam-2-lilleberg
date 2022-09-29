@@ -1,7 +1,8 @@
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Container from "../../layout/Container/Container";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
@@ -33,7 +34,10 @@ const schema = yup.object().shape({
     .required("Enter the price")
     .typeError("Enter the price, digits only"),
   description: yup.string().trim().required("Enter a description"),
-  roomsAvailable: yup.number().typeError("Enter rooms, digits only"),
+  roomsAvailable: yup
+    .number()
+    .min(1, "Must be minimum 1 room")
+    .typeError("Enter rooms, digits only"),
   rating: yup
     .number()
     .required("Enter a rating")
@@ -49,9 +53,14 @@ function NewEstablishmentForm() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [type, setType] = useState("");
+  const navigate = useNavigate();
 
   const url = BASE_URL + "establishments?populate=*";
   const [auth] = useContext(AuthContext);
+
+  useEffect(() => {
+    if (!auth) navigate("/");
+  }, []);
 
   const {
     register,
@@ -93,14 +102,16 @@ function NewEstablishmentForm() {
     try {
       const response = await fetch(url, options);
       const json = await response.json();
+
+      if (response.status === 200) {
+        setSubmitted(true);
+        reset();
+      }
     } catch (error) {
       setError("An error occurred. Please try again.");
     } finally {
       setLoading(false);
     }
-
-    setSubmitted(true);
-    reset();
   }
 
   return (
@@ -110,7 +121,7 @@ function NewEstablishmentForm() {
         onSubmit={handleSubmit(onSubmit)}
       >
         {submitted && (
-          <ResponseMessage className="response-message response-message--success">
+          <ResponseMessage className="response-message response-message--success mx-auto">
             A new establishment has been created
           </ResponseMessage>
         )}
@@ -123,7 +134,7 @@ function NewEstablishmentForm() {
         )}
 
         {error && (
-          <ResponseMessage className="response-message response-message--error">
+          <ResponseMessage className="response-message response-message--error mx-auto">
             {error}
           </ResponseMessage>
         )}

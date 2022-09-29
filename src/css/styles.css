@@ -29,22 +29,24 @@ textarea:active {
 }
 
 .response-message {
+  text-align: center;
+  padding: 10px;
+  max-width: 400px;
+}
+.response-message .text {
+  padding: 10px;
+  font-size: 1.2rem;
   border: 2px solid #006164;
   border-radius: 3px;
   border-color: #ffffff;
-  padding: 10px;
-  margin: 0 auto 20px auto;
-  font-size: 1.2rem;
-  text-align: center;
-  max-width: 400px;
 }
-.response-message--informative {
+.response-message--informative .text {
   font-size: 1.3rem;
 }
-.response-message--error {
+.response-message--error .text {
   border-color: #980505;
 }
-.response-message--success {
+.response-message--success .text {
   border-color: #006164;
 }
 
@@ -196,7 +198,7 @@ h3 {
   margin-right: 20px;
 }
 .form__group--rating {
-  max-width: 250px;
+  max-width: 120px;
   margin-right: 10px;
 }
 .form__group select {
@@ -240,7 +242,7 @@ h3 {
 .form textarea {
   min-height: 80px;
 }
-.form .input-error {
+.form .input-error p {
   margin-top: 5px;
   font-size: 0.9rem;
   color: #980505;

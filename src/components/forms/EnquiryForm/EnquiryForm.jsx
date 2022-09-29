@@ -48,7 +48,7 @@ function EnquiryForm() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [loadName, setLoadName] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(false);
   const [name, setName] = useState("");
 
   const { id } = useParams();
@@ -106,14 +106,16 @@ function EnquiryForm() {
 
     try {
       const response = await axios.post(url, options);
+
+      if (response.status === 200) {
+        setSubmitted(true);
+        reset();
+      }
     } catch (error) {
       setError("There was an error. Please try again");
     } finally {
       setLoading(false);
     }
-
-    setSubmitted(true);
-    reset();
   }
 
   return (
@@ -124,20 +126,20 @@ function EnquiryForm() {
       <Heading content={`${name} - Booking Enquiry`} />
 
       {submitted && (
-        <ResponseMessage className="response-message response-message--success">
+        <ResponseMessage className="response-message response-message--success mx-auto">
           Thank you - your enquiry has been submitted.
         </ResponseMessage>
       )}
 
       {loading && (
-        <ResponseMessage className="response-message response-message--informative">
+        <ResponseMessage className="response-message response-message--informative mx-auto">
           <Spinner className="spinner spinner--small" animation="grow" />
           Sending enquiry...
         </ResponseMessage>
       )}
 
       {error && (
-        <ResponseMessage className="response-message response-message--error">
+        <ResponseMessage className="response-message response-message--error mx-auto">
           {error}
         </ResponseMessage>
       )}
