@@ -242,7 +242,7 @@ h3 {
 .form textarea {
   min-height: 80px;
 }
-.form .input-error p {
+.form .input-error .text {
   margin-top: 5px;
   font-size: 0.9rem;
   color: #980505;

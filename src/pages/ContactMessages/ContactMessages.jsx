@@ -16,7 +16,6 @@ function ContactMessages() {
   const [error, setError] = useState(null);
 
   const [auth] = useContext(AuthContext);
-  const [expanded, setExpanded] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {

@@ -3,7 +3,7 @@
   border: $border-thick;
   color: $primary;
   background-color: $white;
-  padding: 5px 10px;
+  padding: $space-xs $space-sm;
   box-shadow: $shadow;
 
   &:hover {

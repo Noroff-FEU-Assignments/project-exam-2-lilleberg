@@ -45,9 +45,7 @@ function App() {
               <Route path="*" element={<PageNotFound />} />
             </Routes>
           </main>
-          <footer>
-            <Footer />
-          </footer>
+          <Footer />
         </Router>
       </AuthProvider>
     </HelmetProvider>

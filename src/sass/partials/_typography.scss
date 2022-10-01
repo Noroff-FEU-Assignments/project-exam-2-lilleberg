@@ -12,7 +12,6 @@ a {
 
 a {
   text-decoration: none;
-  font-size: 1.3rem;
 
   &:hover {
     color: $white;
@@ -64,6 +63,11 @@ h3 {
   font-size: 1.8rem;
 }
 
+.nav__link,
+a {
+  font-size: 1.3rem;
+}
+
 h2,
 h3 {
   margin-bottom: $space-sm;
@@ -78,6 +82,5 @@ h3 {
 }
 
 .nav__link {
-  font-size: 1.3rem;
   color: $white;
 }
