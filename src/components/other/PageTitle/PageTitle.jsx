@@ -6,7 +6,7 @@ function PageTitle({ title, description }) {
       <meta charSet="utf-8" />
       <title>Holidaze | {title}</title>
       <link rel="canonical" href="https://holidaze-pe2-mh.netlify.app/" />
-      <meta name="description" content={description} />
+      <meta name="description" content={description} data-react-helmet="true" />
     </Helmet>
   );
 }
