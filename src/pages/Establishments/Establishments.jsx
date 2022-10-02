@@ -62,8 +62,10 @@ function Establishments() {
               >
                 <Link to={`/establishment/${establishment.id}`}>
                   <EstablishmentItem
-                    image={item.featuredImage.data.attributes.url}
-                    altText={image.attributes ? image.attributes : image.name}
+                    image={image.url}
+                    altText={
+                      image.alternativeText ? image.alternativeText : image.name
+                    }
                     name={item.name}
                     rating={item.rating}
                     price={item.price}

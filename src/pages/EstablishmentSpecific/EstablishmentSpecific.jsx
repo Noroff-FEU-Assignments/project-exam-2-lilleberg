@@ -8,6 +8,7 @@ import EstablishmentSpecificItem from "../../components/establishmentItems/Estab
 import ResponseMessage from "../../components/ui/ResponseMessage/ResponseMessage";
 import Heading from "../../components/typography/Heading/Heading";
 import PageTitle from "../../components/other/PageTitle/PageTitle";
+import SetBreadcrumb from "../../components/ui/SetBreadcrumb/SetBreadcrumb";
 
 function EstablishmentSpecific() {
   const [establishment, setEstablishment] = useState(null);
@@ -66,6 +67,7 @@ function EstablishmentSpecific() {
     <>
       <PageTitle title={name} description={trimmedDesc} />
       <Container className="container-main">
+        <SetBreadcrumb name={name} />
         <Heading content={name} />
         <EstablishmentSpecificItem
           images={images.data}

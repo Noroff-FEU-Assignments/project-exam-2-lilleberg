@@ -34,7 +34,8 @@ label {
 
 p,
 a,
-.nav__btn--logout {
+.nav__btn--logout,
+.breadcrumb__item--active {
   font-weight: 300;
 }
 
@@ -42,10 +43,17 @@ a,
   font-weight: 400;
 }
 
+.nav__link,
+a {
+  font-size: 1.3rem;
+}
+
 p,
 .form__input,
 .form__label,
-.btn {
+.btn,
+.breadcrumb__item a,
+.breadcrumb__item {
   font-size: 1.1rem;
 }
 
@@ -61,11 +69,6 @@ h2 {
 
 h3 {
   font-size: 1.8rem;
-}
-
-.nav__link,
-a {
-  font-size: 1.3rem;
 }
 
 h2,

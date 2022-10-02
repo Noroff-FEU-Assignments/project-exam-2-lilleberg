@@ -47,4 +47,33 @@
       display: none;
     }
   }
+
+  @media only screen and (min-width: 768px) {
+    &__img {
+      height: 30rem;
+    }
+  }
+}
+
+.breadcrumb {
+  margin-top: $space-sm;
+  &__item {
+    & a:hover {
+      text-decoration: underline;
+    }
+
+    &:before,
+    & a:hover {
+      color: $black;
+    }
+
+    &.active {
+      color: $primary;
+    }
+
+    &:before,
+    &.active {
+      font-weight: 400;
+    }
+  }
 }
