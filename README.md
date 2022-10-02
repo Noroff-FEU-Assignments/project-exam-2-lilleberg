@@ -5,11 +5,13 @@
 Email: admin@holidaze.com  
 Password: Pass1234
 
-## Information
+## About
 
 This project is for Project Exam 2 at Noroff. It's a hotel booking website called Holidaze, which also allows for an admin to sign in and view messages as well as create a new establishment.
 
 This Project uses react-bootstrap and is styled with Sass. Strapi is used for the API and is hosted on Heroku.
+
+## Install and run project
 
 To install the packages, run:
 
@@ -23,16 +25,13 @@ To start the project on localhost, run:
 npm run start
 ```
 
-## Project Exam 2
+# Project Exam 2
 
-There are two options with this Project Exam.
-You need to only choose one and please follow the deliveries carefully.
-
-### Goal
+## Goal
 
 To take the skills learned over the last two years and take on an extensive project where the finished product should reflect the candidate's general development capabilities, in addition to visual and technical skills.
 
-### Brief
+## Brief
 
 For this assignment you have the choice between getting a real world client that you will manage and build a website for, or a case study to make a hotel booking website.
 
