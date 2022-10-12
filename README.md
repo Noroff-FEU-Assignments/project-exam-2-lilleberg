@@ -42,7 +42,7 @@ About the project (based on reqiurements given):
 1. Clone the repo:
 
 ```
-https://github.com/Noroff-FEU-Assignments/project-exam-2-lilleberg.git
+git clone https://github.com/Noroff-FEU-Assignments/project-exam-2-lilleberg.git
 ```
 
 2. Install the dependencies:
